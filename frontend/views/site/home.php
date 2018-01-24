@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>Teknik Informatika | Inkubator TIF</title>
+<title>TIF | Inkubator TIF</title>
 
 
 <link rel="shortcut icon" href="images/u.png">
