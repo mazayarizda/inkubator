@@ -26,7 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- header -->
 <div class="header" id="judul">
 	<div class="container">
-		<h1><img src="images/u.png">INKUBATOR Bisnis dan Produk<br>Teknik Informatika Uin Suska</h1>
+		<h1><img src="images/u.png">INKUBATOR Bisnis<br>Teknik Informatika Uin Suska</h1>
 
 	</div>
 	</div>
