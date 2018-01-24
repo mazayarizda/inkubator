@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>TIF | Inkubator TIF</title>
+<title>Teknik Informatika | Inkubator TIF</title>
 <link rel="shortcut icon" href="images/u.png">
 <!--/tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
