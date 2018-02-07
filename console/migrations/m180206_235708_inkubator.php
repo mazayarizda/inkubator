@@ -41,24 +41,24 @@ class m180206_235708_inkubator extends Migration
          */
         //Create tabel admin
         $this->createTable('admin',[
-            'id'=> $this->primaryKey(),
+            'id_admin'=> $this->primaryKey(),
             'username'=> $this->string()->notNull()->unique(),
             'email'=> $this->string()->notNull()->unique(),
             'nama'=> $this->string()->notNull(),
             'password_hash'=> $this->string()->notNull(),
             'password_reset_token' => $this->string()->unique(),
             'auth_key'=> $this->string(32)->notNull(),
-            'avatar'=>$this->string(),
+            'avatar'=>$this->string()->defaultValue('profile.jpg'),
             'tempat_lahir'=> $this->string(),
             'tanggal_lahir'=> $this->date(),
             'status' => $this->smallInteger()->notNull()->defaultValue(10),
-            'created_at' => $this->date(),
-            'updated_at' => $this->date(),
+            'created_at' => $this->dateTime(),
+            'updated_at' => $this->dateTime(),
         ],$tableOptions);
 
         //Create Table User
         $this->createTable('user',[
-            'id'=> $this->primaryKey(),
+            'id_user'=> $this->primaryKey(),
             'username'=> $this->string()->notNull()->unique(),
             'email'=> $this->string()->notNull()->unique(),
             'nama'=> $this->string()->notNull(),
@@ -70,8 +70,8 @@ class m180206_235708_inkubator extends Migration
             'tanggal_lahir'=> $this->date(),
             'alamat'=> $this->string(),
             'status' => $this->smallInteger()->notNull()->defaultValue(10),
-            'created_at' => $this->timestamp(),
-            'updated_at' => $this->timestamp(),
+            'created_at' => $this->dateTime(),
+            'updated_at' => $this->dateTime(),
         ],$tableOptions);
 
         //Create table produk
@@ -85,8 +85,9 @@ class m180206_235708_inkubator extends Migration
             'harga'=>$this->integer()->notNull()->defaultValue(0),
             'video'=>$this->string(),
             'status'=>$this->smallInteger()->notNull()->defaultValue(1),
-            'created_at'=>$this->timestamp(),
-            'updated_at'=>$this->timestamp(),
+            'added_by'=>$this->integer(),
+            'created_at'=>$this->dateTime(),
+            'updated_at'=>$this->dateTime(),
 
         ],$tableOptions);
 
@@ -110,8 +111,8 @@ class m180206_235708_inkubator extends Migration
         $this->createTable('tag',[
             'id_tag'=>$this->primaryKey(),
             'nama_tag'=>$this->string(),
-            'created_at'=>$this->timestamp(),
-            'updated_at'=>$this->timestamp(),
+            'created_at'=>$this->dateTime(),
+            'updated_at'=>$this->dateTime(),
         ],$tableOptions);
 
         //create table tag produk
@@ -128,15 +129,15 @@ class m180206_235708_inkubator extends Migration
 
 
         /*
-         *  =================================== INDEX PREPARATION ==================================================
-         */
+     *  =================================== INDEX PREPARATION ==================================================
+     */
 
 
         //create index for table admin
-        $this->createIndex('idx-admin','admin',['username','nama','email']);
+        $this->createIndex('idx-admin','admin',['id_admin','username','nama','email']);
 
         //create index for table user
-        $this->createIndex('idx-user','user',['username','nama','email']);
+        $this->createIndex('idx-user','user',['id_user', 'username','nama','email']);
 
         //create index for table produk
         $this->createIndex('idx-produk','produk',['nama_produk','developer','harga']);
@@ -154,6 +155,8 @@ class m180206_235708_inkubator extends Migration
         $this->createIndex('idx-tag-berita','tag_berita',['id_berita','id_tag']);
 
 
+
+
         /*
          *  ========================================== FOREIGN KEY PREPARATION =========================================
          */
@@ -163,13 +166,11 @@ class m180206_235708_inkubator extends Migration
             'produk',
             'added_by',
             'admin',
-            'id_admin',
-            'NULL',
-            'CASCADE');
+            'id_admin');
 
         //foreign key tabel detail-produk
         $this->addForeignKey('fk-detail_produk-id_produk',
-            'detail-produk',
+            'detail_produk',
             'id_produk',
             'produk',
             'id_produk',
@@ -182,7 +183,7 @@ class m180206_235708_inkubator extends Migration
             'penerbit_berita',
             'admin',
             'id_admin',
-            'NULL',
+            'SET NULL',
             'CASCADE'
             );
 
@@ -225,6 +226,7 @@ class m180206_235708_inkubator extends Migration
             'id_tag',
             'CASCADE',
             'CASCADE');
+
 
     }
 
