@@ -12,6 +12,7 @@
 
 </div>
 
+<script>var resizefunc = []</script>
 
 <!-- ============================================================== -->
 <!-- End Right content here -->
