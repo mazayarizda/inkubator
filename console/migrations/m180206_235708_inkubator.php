@@ -41,7 +41,7 @@ class m180206_235708_inkubator extends Migration
          */
         //Create tabel admin
         $this->createTable('admin',[
-            'id_admin'=> $this->primaryKey(),
+            'id'=> $this->primaryKey(),
             'username'=> $this->string()->notNull()->unique(),
             'email'=> $this->string()->notNull()->unique(),
             'nama'=> $this->string()->notNull(),
@@ -51,6 +51,7 @@ class m180206_235708_inkubator extends Migration
             'avatar'=>$this->string()->defaultValue('profile.jpg'),
             'tempat_lahir'=> $this->string(),
             'tanggal_lahir'=> $this->date(),
+            'alamat'=> $this->string(),
             'status' => $this->smallInteger()->notNull()->defaultValue(10),
             'created_at' => $this->dateTime(),
             'updated_at' => $this->dateTime(),
@@ -58,7 +59,7 @@ class m180206_235708_inkubator extends Migration
 
         //Create Table User
         $this->createTable('user',[
-            'id_user'=> $this->primaryKey(),
+            'id'=> $this->primaryKey(),
             'username'=> $this->string()->notNull()->unique(),
             'email'=> $this->string()->notNull()->unique(),
             'nama'=> $this->string()->notNull(),
@@ -134,10 +135,10 @@ class m180206_235708_inkubator extends Migration
 
 
         //create index for table admin
-        $this->createIndex('idx-admin','admin',['id_admin','username','nama','email']);
+        $this->createIndex('idx-admin','admin',['username','nama','email']);
 
         //create index for table user
-        $this->createIndex('idx-user','user',['id_user', 'username','nama','email']);
+        $this->createIndex('idx-user','user',['username','nama','email']);
 
         //create index for table produk
         $this->createIndex('idx-produk','produk',['nama_produk','developer','harga']);
@@ -149,10 +150,10 @@ class m180206_235708_inkubator extends Migration
         $this->createIndex('idx-berita','berita',['judul_berita','penerbit_berita']);
 
         //create index for table tag_produk
-        $this->createIndex('idx-tag-produk','tag_produk',['id_produk','id_tag']);
+        $this->createIndex('idx-tag_produk','tag_produk',['id_produk','id_tag']);
 
         //create index for table tag_berita
-        $this->createIndex('idx-tag-berita','tag_berita',['id_berita','id_tag']);
+        $this->createIndex('idx-tag_berita','tag_berita',['id_berita','id_tag']);
 
 
 
@@ -166,7 +167,7 @@ class m180206_235708_inkubator extends Migration
             'produk',
             'added_by',
             'admin',
-            'id_admin');
+            'id');
 
         //foreign key tabel detail-produk
         $this->addForeignKey('fk-detail_produk-id_produk',
@@ -182,7 +183,7 @@ class m180206_235708_inkubator extends Migration
             'berita',
             'penerbit_berita',
             'admin',
-            'id_admin',
+            'id',
             'SET NULL',
             'CASCADE'
             );
@@ -265,7 +266,7 @@ class m180206_235708_inkubator extends Migration
         $this->dropTable('tag_berita');
       //  echo "m180206_235708_inkubator cannot be reverted.\n";
 
-        return false;
+        return true;
     }
 
     /*

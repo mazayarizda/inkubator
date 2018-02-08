@@ -22,7 +22,7 @@ $fieldOptions2 = [
 <div class="clearfix"></div>
 <div class="wrapper-page">
     <div class="text-center">
-        <a href="index.html" class="logo"><span>Inkubator<span>TIF</span></span></a>
+        <a href="index" class="logo"><span>Inkubator<span>TIF</span></span></a>
         <h5 class="text-muted m-t-0 font-600">Universitas Islam Negeri Sultan Syarif Kasim Riau.</h5>
     </div>
     <div class="m-t-40 card-box">
