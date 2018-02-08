@@ -5,8 +5,6 @@
  * Date: 25/01/18
  * Time: 13:44
  */
-use yii\widgets\Breadcrumbs;
-use common\widgets\Alert;
 ?>
 <!-- Begin page -->
 <div id="wrapper">
@@ -16,7 +14,7 @@ use common\widgets\Alert;
 
         <!-- LOGO -->
         <div class="topbar-left">
-            <a href="index.html" class="logo"><span>Admin<span>to</span></span><i class="zmdi zmdi-layers"></i></a>
+            <a href="/inkubator/backend/web/" class="logo"><span>Inkubator<span>TIF</span></span><i class="zmdi zmdi-layers"></i></a>
         </div>
 
         <!-- Button mobile view to collapse sidebar menu -->
@@ -31,43 +29,40 @@ use common\widgets\Alert;
                         </button>
                     </li>
                     <li>
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title"><?= Yii::$app->name?></h4>
                     </li>
                 </ul>
 
                 <!-- Right(Notification and Searchbox -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <!-- Notification -->
-                        <div class="notification-box">
-                            <ul class="list-inline m-b-0">
-                                <li>
-                                    <a href="javascript:void(0);" class="right-bar-toggle">
-                                        <i class="zmdi zmdi-notifications-none"></i>
-                                    </a>
-                                    <div class="noti-dot">
-                                        <span class="dot"></span>
-                                        <span class="pulse"></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- End Notification bar -->
-                    </li>
-                    <li class="hidden-xs">
-                        <form role="search" class="app-search">
-                            <input type="text" placeholder="Search..."
-                                   class="form-control">
-                            <a href=""><i class="fa fa-search"></i></a>
-                        </form>
-                    </li>
-                </ul>
+<!--                <ul class="nav navbar-nav navbar-right">-->
+<!--                    <li>-->
+<!--                        <!-- Notification -->
+<!--                        <div class="notification-box">-->
+<!--                            <ul class="list-inline m-b-0">-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0);" class="right-bar-toggle">-->
+<!--                                        <i class="zmdi zmdi-notifications-none"></i>-->
+<!--                                    </a>-->
+<!--                                    <div class="noti-dot">-->
+<!--                                        <span class="dot"></span>-->
+<!--                                        <span class="pulse"></span>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                        <!-- End Notification bar -->
+<!--                    </li>-->
+<!--                    <li class="hidden-xs">-->
+<!--                        <form role="search" class="app-search">-->
+<!--                            <input type="text" placeholder="Search..."-->
+<!--                                   class="form-control">-->
+<!--                            <a href=""><i class="fa fa-search"></i></a>-->
+<!--                        </form>-->
+<!--                    </li>-->
+<!--                </ul>-->
 
             </div><!-- end container -->
         </div><!-- end navbar -->
     </div>
     <!-- Top Bar End -->
-    <?= Breadcrumbs::widget([
-        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-    ]) ?>
-    <?= Alert::widget() ?>
+
