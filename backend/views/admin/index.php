@@ -7,42 +7,51 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\AdminSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Admins';
+$this->title = 'Admin';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="admin-index">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+            <h4 class="header-title m-t-0 m-b-30"><?= Html::encode($this->title) ?></h4>
 
-    <p>
-        <?= Html::a('Create Admin', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            <?php Pjax::begin(); ?>
+            <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-            'id',
-            'username',
-            'email:email',
-            'nama',
-            'password_hash',
-            //'password_reset_token',
-            //'auth_key',
-            //'avatar',
-            //'tempat_lahir',
-            //'tanggal_lahir',
-            //'alamat',
-            //'status',
-            //'created_at',
-            //'updated_at',
+            <p>
+                <?= Html::a('Create Admin', ['create'], ['class' => 'btn btn-success']) ?>
+            </p>
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-    <?php Pjax::end(); ?>
+            <?= \fedemotta\datatables\DataTables::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
+
+                    //'id',
+                    'username',
+                    'email:email',
+                    'nama',
+                    //'password_hash',
+                    //'password_reset_token',
+                    //'auth_key',
+                    //'avatar',
+                    //'tempat_lahir',
+                    //'tanggal_lahir',
+                    //'alamat',
+                    'status',
+                    //'created_at',
+                    //'updated_at',
+
+                    ['class' => 'yii\grid\ActionColumn'],
+                ],
+            ]); ?>
+            <?php Pjax::end(); ?>
+        </div>
+    </div><!-- end col -->
+
 </div>
+
+

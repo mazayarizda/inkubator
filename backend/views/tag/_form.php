@@ -8,13 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card-box">
 
-            <h4 class="header-title m-t-0 m-b-30"><?= Html::encode($this->title) ?></h4>
-
-            <!-- end row -->
             <div class="tag-form">
 
                 <?php $form = ActiveForm::begin(); ?>
@@ -29,8 +23,4 @@ use yii\widgets\ActiveForm;
 
             </div>
 
-        </div>
-    </div><!-- end col -->
-
-</div>
 

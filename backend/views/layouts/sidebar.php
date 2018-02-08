@@ -49,12 +49,11 @@ $controllerName = substr($route,0,strpos($route,'/'));
             <?= \common\widgets\Menu::widget(
                 [
                     'items' => [
-                        // ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-                        // ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                         ['label'=>'Beranda', 'icon'=>'zmdi-view-dashboard','url'=>['/site'],'template'=>$controllerName == 'site'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Produk   ', 'icon'=>'zmdi-code','url'=>['/produk'],'template'=>$controllerName == 'produk'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Berita', 'icon'=>'zmdi-blogger','url'=>['/berita'],'template'=>$controllerName == 'berita'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Tag', 'icon'=>'zmdi-tag','url'=>['/tag'],'template'=>$controllerName == 'tag'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
+                        ['label'=>'Admin', 'icon'=>'zmdi-account-circle','url'=>['/admin'],'template'=>$controllerName == 'admin'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Pengguna', 'icon'=>'zmdi-accounts','url'=>['/user'],'template'=>$controllerName == 'user'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                     ]
                 ]
