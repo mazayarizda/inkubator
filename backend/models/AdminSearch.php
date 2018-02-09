@@ -1,11 +1,11 @@
 <?php
 
-namespace common\models;
+namespace backend\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Admin;
+use backend\models\Admin;
 
 /**
  * AdminSearch represents the model behind the search form of `common\models\Admin`.

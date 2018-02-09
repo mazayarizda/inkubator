@@ -24,7 +24,7 @@ $controllerName = substr($route,0,strpos($route,'/'));
             <h5><a href="#"><?= Yii::$app->user->identity->nama ?></a> </h5>
             <ul class="list-inline">
                 <li>
-                    <?= Html::a(' <i class="zmdi zmdi-settings"></i>','admin/'.Yii::$app->user->getId(),['class'=> 'btn btn-link']) ?>
+                    <?= Html::a(' <i class="zmdi zmdi-settings"></i>','/inkubator/backend/web/admin/'.Yii::$app->user->getId(),['class'=> 'btn btn-link']) ?>
                 </li>
 
                 <li>

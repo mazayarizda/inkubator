@@ -10,7 +10,7 @@ use yii\bootstrap\NavBar;
 
 
 AppAsset::register($this);
-$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => 'favicon.ico']);
+$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => '/inkubator/backend/web/favicon.ico']);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

@@ -5,6 +5,13 @@
  * Date: 25/01/18
  * Time: 13:44
  */
+
+use yii\helpers\Html;
+$route = $this->context->route;
+$controllerName = substr($route,0,strpos($route,'/'));
+if($controllerName == 'site'){
+    $controllerName = "Dashboard";
+}
 ?>
 <!-- Begin page -->
 <div id="wrapper">
@@ -29,7 +36,7 @@
                         </button>
                     </li>
                     <li>
-                        <h4 class="page-title"><?= Yii::$app->name?></h4>
+                        <h4 class="page-title"><?=ucwords($controllerName)?></h4>
                     </li>
                 </ul>
 
