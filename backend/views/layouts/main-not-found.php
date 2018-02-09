@@ -22,10 +22,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => '/inku
     <?php $this->head() ?>
 </head>
 <body>
+
 <?php $this->beginBody() ?>
 
 
-        <?= $content ?>
+<?= $content ?>
 
 
 

@@ -67,7 +67,8 @@ class TagController extends Controller
         $model = new Tag();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_tag]);
+            Yii::$app->session->setFlash('success',"Tag berhasil dibuat.");
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -87,6 +88,7 @@ class TagController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success',"Tag berhasil diperbarui.");
             return $this->redirect(['view', 'id' => $model->id_tag]);
         }
 

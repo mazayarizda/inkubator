@@ -6,9 +6,12 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Tag */
 
-$this->title = $model->id_tag;
+$this->title = $model->nama_tag;
 $this->params['breadcrumbs'][] = ['label' => 'Tags', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+if(Yii::$app->session->hasFlash('success')){
+    Yii::$app->session->getFlash('success');
+}
 ?>
 
 <div class="row">
@@ -35,8 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attributes' => [
                         'id_tag',
                         'nama_tag',
-                        'created_at',
-                        'updated_at',
+                        'created_at:datetime',
+                        'updated_at:datetime',
                     ],
                 ]) ?>
 

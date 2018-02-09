@@ -7,8 +7,12 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\TagSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tags';
+$this->title = 'Tag';
 $this->params['breadcrumbs'][] = $this->title;
+if(Yii::$app->session->hasFlash('success'))
+{
+   Yii::$app->session->getFlash('success');
+}
 ?>
 
             <div class="row">
@@ -31,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'columns' => [
                                 ['class' => 'yii\grid\SerialColumn'],
 
-                                'id_tag',
+                                //'id_tag',
                                 'nama_tag',
                                 'created_at:date',
                                 'updated_at:date',
