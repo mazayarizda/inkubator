@@ -19,6 +19,7 @@ class AppAsset extends AssetBundle
         'css/pages.css',
         'css/responsive.css',
         'css/variables.css',
+        'css/pace-theme-flash.css',
 
     ];
     public $js = [
