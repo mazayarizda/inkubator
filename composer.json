@@ -19,7 +19,9 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "fedemotta/yii2-widget-datatables": "*",
-        "lavrentiev/yii2-toastr": "^2.0"
+        "yii2mod/yii2-sweet-alert": "*",
+        "life2016/yii2-tagsinput": "^1.1",
+        "2amigos/yii2-tinymce-widget": "~1.1"
 
     },
     "require-dev": {

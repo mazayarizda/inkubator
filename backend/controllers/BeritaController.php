@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\TagBerita;
 use Yii;
 use common\models\Berita;
 use common\models\BeritaSearch;
@@ -65,6 +66,7 @@ class BeritaController extends Controller
     public function actionCreate()
     {
         $model = new Berita();
+        $model1 = new TagBerita();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_berita]);

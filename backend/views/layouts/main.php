@@ -33,8 +33,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => '/inku
 
 
 
-
-
 <?php $this->endBody() ?>
 </body>
 </html>

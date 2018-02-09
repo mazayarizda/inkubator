@@ -23,6 +23,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/detect.js',
+        'js/yii_override.js',
         'js/fastclick.js',
         'js/jquery.app.js',
         'js/jquery.blockUI.js',
@@ -42,5 +43,6 @@ class AppAsset extends AssetBundle
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
         'yii\web\JqueryAsset',
+        'yii2mod\alert\AlertAsset',
     ];
 }

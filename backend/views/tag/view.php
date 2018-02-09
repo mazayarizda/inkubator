@@ -36,7 +36,7 @@ if(Yii::$app->session->hasFlash('success')){
                 <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [
-                        'id_tag',
+                       // 'id_tag',
                         'nama_tag',
                         'created_at:datetime',
                         'updated_at:datetime',
