@@ -83,6 +83,8 @@ class Berita extends \yii\db\ActiveRecord
             'isi_berita' => 'Isi Berita',
             'gambar_berita' => 'Gambar Berita',
             'penerbit_berita' => 'Penerbit Berita',
+            'created_at' => 'Tanggal Dibuat',
+            'updated_at'=> 'Terakhir Diperbarui'
         ];
     }
 

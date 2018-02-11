@@ -6,9 +6,13 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Berita */
 
-$this->title = $model->id_berita;
+$this->title = $model->judul_berita;
 $this->params['breadcrumbs'][] = ['label' => 'Berita', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+if(Yii::$app->session->hasFlash('success'))
+{
+    Yii::$app->session->getFlash('success');
+}
 ?>
 <div class="row">
     <div class="col-lg-12">
@@ -65,6 +69,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             }
                         ],
                         'penerbit_berita',
+                        'created_at',
+                        'updated_at'
                     ],
                 ]) ?>
 

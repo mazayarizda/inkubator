@@ -103,7 +103,20 @@ class BeritaController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $gambar_sekarang = $model->gambar_berita;
+        $data = Yii::$app->request->post();
+
+        if ($model->load($data)) {
+            $gambar = UploadedFile::getInstance($model,'gambar_berita');
+            if(isset($gambar)){
+                $gambar->saveAs(Yii::$app->basePath. '/web/images/'. $gambar->baseName. '.'. $gambar->extension);
+                $model->gambar_berita = $gambar->baseName . '.' . $gambar->extension;
+            }
+            else{
+                $model->gambar_berita = $gambar_sekarang;
+            }
+            $model->save();
+            Yii::$app->session->setFlash('success','Berita berhasil diperbarui.');
             return $this->redirect(['view', 'id' => $model->id_berita]);
         }
 

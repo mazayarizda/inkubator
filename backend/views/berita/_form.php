@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
 <div class="berita-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype'=>'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'judul_berita')->textInput(['maxlength' => true]) ?>
 
@@ -39,7 +39,18 @@ use yii\widgets\ActiveForm;
     ]);?>
 
     <?= $form->field($model, 'gambar_berita')->widget(FileInput::className(),[
-        'options'=>['accept'=>'image/*']
+        'options'=>['accept'=>'image/*','multiple'=>false],
+        'pluginOptions' => [
+            'initialPreview'=> '/inkubator/backend/web/images/'.$model->gambar_berita,
+            'initialPreviewAsData'=>true,
+            'initialCaption'=>$model->gambar_berita,
+            'initialPreviewConfig' => [
+                ['caption' => $model->gambar_berita],
+            ],
+            'overwriteInitial'=>true,
+            'showUpload'=>false,
+
+        ],
     ]) ?>
 
 
