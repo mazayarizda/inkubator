@@ -45,5 +45,7 @@ class AppAsset extends AssetBundle
         'yii\bootstrap\BootstrapAsset',
         'yii\web\JqueryAsset',
         'yii2mod\alert\AlertAsset',
+        'sjaakp\taggable\TagEditorAsset',
+        'kartik\file\PiExifAsset'
     ];
 }

@@ -3,7 +3,11 @@
 namespace common\models;
 
 use backend\models\Admin;
+use sjaakp\taggable\TaggableBehavior;
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "berita".
@@ -27,6 +31,31 @@ class Berita extends \yii\db\ActiveRecord
         return 'berita';
     }
 
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => 'updated_at',
+                ],
+                'value' => function($event) {
+
+                    return new Expression('NOW()');
+                }
+            ],
+            'taggable'=>[
+                'class'=> TaggableBehavior::className(),
+                'tagClass' => Tag::className(),
+                'junctionTable' => 'tag_berita',
+                'nameAttribute' => 'nama_tag',
+                'modelKeyAttribute' => 'id_berita',
+                'tagKeyAttribute' => 'id_tag',
+            ]
+        ] ;
+    }
+
     /**
      * @inheritdoc
      */
@@ -36,7 +65,9 @@ class Berita extends \yii\db\ActiveRecord
             [['judul_berita'], 'required'],
             [['isi_berita'], 'string'],
             [['penerbit_berita'], 'integer'],
-            [['judul_berita', 'gambar_berita'], 'string', 'max' => 255],
+            [['editorTags'], 'safe'],
+            [['judul_berita'], 'string', 'max' => 255],
+            [['gambar_berita'], 'file','skipOnEmpty' => true],
             [['penerbit_berita'], 'exist', 'skipOnError' => true, 'targetClass' => Admin::className(), 'targetAttribute' => ['penerbit_berita' => 'id']],
         ];
     }

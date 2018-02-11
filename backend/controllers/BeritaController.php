@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Tag;
 use common\models\TagBerita;
 use Yii;
 use common\models\Berita;
@@ -9,6 +10,7 @@ use common\models\BeritaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * BeritaController implements the CRUD actions for Berita model.
@@ -66,14 +68,27 @@ class BeritaController extends Controller
     public function actionCreate()
     {
         $model = new Berita();
-        $model1 = new TagBerita();
+        $data = Yii::$app->request->post();
+        $model->gambar_berita = UploadedFile::getInstance($model,'gambar_berita');
+        if($model->gambar_berita !=NULL) $data['Berita']['gambar_berita'] = $model->gambar_berita;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_berita]);
+        if ($model->load($data)) {
+            if ($model->gambar_berita != NULL){
+                $model->gambar_berita->saveAs(Yii::$app->basePath. '/web/images/'. $model->gambar_berita->baseName. '.'. $model->gambar_berita->extension);
+
+            }
+            else{
+                $model->gambar_berita = NULL;
+            }
+            $model->penerbit_berita = Yii::$app->user->id;
+            $model->save();
+            Yii::$app->session->setFlash('success','Berita berhasil dibuat.');
+            return $this->redirect(['berita/index']);
         }
 
         return $this->render('create', [
             'model' => $model,
+
         ]);
     }
 
@@ -125,5 +140,8 @@ class BeritaController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    public static function actionTagList(){
+        return Tag::find()->all();
     }
 }

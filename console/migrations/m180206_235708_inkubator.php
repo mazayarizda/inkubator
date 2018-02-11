@@ -106,12 +106,15 @@ class m180206_235708_inkubator extends Migration
             'isi_berita'=>$this->text(),
             'gambar_berita'=>$this->string(),
             'penerbit_berita'=>$this->integer(),
+            'created_at'=>$this->dateTime(),
+            'updated_at'=>$this->dateTime(),
         ],$tableOptions);
 
         //create table tag
         $this->createTable('tag',[
-            'id_tag'=>$this->primaryKey(),
+            'id'=>$this->primaryKey(),
             'nama_tag'=>$this->string(),
+            'count'=>$this->integer(),
             'created_at'=>$this->dateTime(),
             'updated_at'=>$this->dateTime(),
         ],$tableOptions);
@@ -120,12 +123,14 @@ class m180206_235708_inkubator extends Migration
         $this->createTable('tag_produk',[
             'id_produk'=>$this->integer(),
             'id_tag'=>$this->integer(),
+            'ord'=>$this->integer(),
         ],$tableOptions);
 
         //create table tag berita
         $this->createTable('tag_berita',[
             'id_berita'=>$this->integer(),
             'id_tag'=>$this->integer(),
+            'ord'=>$this->integer(),
         ],$tableOptions);
 
 
