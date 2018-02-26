@@ -9,6 +9,10 @@ use yii\widgets\Pjax;
 
 $this->title = 'Produk';
 $this->params['breadcrumbs'][] = $this->title;
+if(Yii::$app->session->hasFlash('success'))
+{
+    Yii::$app->session->getFlash('success');
+}
 ?>
 <div class="row">
     <div class="col-lg-12">
@@ -16,7 +20,6 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="produk-index">
 
                 <h4 class="header-title m-t-0 m-b-30"><?= Html::encode($this->title) ?></h4>
-                <?php Pjax::begin(); ?>
                 <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
                 <p>
@@ -27,13 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
                     'columns' => [
-                        ['class' => 'yii\grid\SerialColumn'],
+                        ['class' => 'yii\grid\SerialColumn','header' => 'No'],
 
-                        'id_produk',
+                       // 'id_produk',
                         'nama_produk',
                         'developer',
-                        'deskripsi_produk:ntext',
-                        'fitur_produk',
+                        //'deskripsi_produk:ntext',
+                        //'fitur_produk',
                         //'spesifikasi',
                         //'harga',
                         //'video',
@@ -42,10 +45,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         //'created_at',
                         //'updated_at',
 
-                        ['class' => 'yii\grid\ActionColumn'],
+                        ['class' => 'yii\grid\ActionColumn','header' => 'Aksi'],
                     ],
                 ]); ?>
-                <?php Pjax::end(); ?>
             </div>
         </div>
 

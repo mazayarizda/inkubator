@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use sjaakp\taggable\TagSuggestAction;
 use Yii;
 use common\models\Tag;
 use common\models\TagSearch;
@@ -29,6 +30,19 @@ class TagController extends Controller
         ];
     }
 
+    public function actions()
+    {
+
+        return [
+            'suggest' => [
+              'class'=> TagSuggestAction::className(),
+                'tagClass' => Tag::className(),
+                'nameAttribute' => 'nama_tag',
+
+            ],
+        ];
+    }
+
     /**
      * Lists all Tag models.
      * @return mixed
@@ -52,8 +66,9 @@ class TagController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -89,7 +104,7 @@ class TagController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success',"Tag berhasil diperbarui.");
-            return $this->redirect(['view', 'id' => $model->id_tag]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [

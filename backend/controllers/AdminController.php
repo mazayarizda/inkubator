@@ -8,6 +8,7 @@ use backend\models\AdminSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * AdminController implements the CRUD actions for Admin model.
@@ -30,50 +31,19 @@ class AdminController extends Controller
     }
 
     /**
-     * Lists all Admin models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $searchModel = new AdminSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
      * Displays a single Admin model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView()
     {
+        $id = Yii::$app->user->getId();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
 
-    /**
-     * Creates a new Admin model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Admin();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
-    }
 
     /**
      * Updates an existing Admin model.
@@ -82,12 +52,27 @@ class AdminController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate()
     {
+        $id = Yii::$app->user->getId();
         $model = $this->findModel($id);
+        $data = Yii::$app->request->post();
+        $gambar_sekarang = $model->avatar;
+        if ($model->load($data)) {
+            $gambar = UploadedFile::getInstance($model,'avatar');
+            if(isset($gambar)){
+                $gambar->saveAs(Yii::$app->basePath. '/web/images/avatar/'. $gambar->baseName. '.'. $gambar->extension);
+                $model->avatar = $gambar->baseName . '.' . $gambar->extension;
+            }
+            else{
+                $model->avatar = $gambar_sekarang;
+            }
+            $model->setPassword($model->password_hash);
+            if ($model->save(false)){
+                Yii::$app->session->setFlash('success','Pengguna berhasil diperbarui.');
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -95,19 +80,6 @@ class AdminController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing Admin model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
 
     /**
      * Finds the Admin model based on its primary key value.

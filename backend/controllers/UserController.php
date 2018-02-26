@@ -2,12 +2,14 @@
 
 namespace backend\controllers;
 
+use backend\models\UserManager;
 use Yii;
 use common\models\User;
 use common\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -25,6 +27,19 @@ class UserController extends Controller
                 'actions' => [
                     'delete' => ['POST'],
                 ],
+            ],
+        ];
+    }
+
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
     }
@@ -65,9 +80,20 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new User();
+        $data = Yii::$app->request->post();
+        if ($model->load($data)) {
+            $model->setPassword($model->password_hash);
+            $model->generateAuthKey();
+            $model->avatar = UploadedFile::getInstance($model,'avatar');
+            if ($model->avatar != null){
+                $model->avatar->saveAs(Yii::$app->basePath. '/web/images/avatar/'. $model->avatar->baseName. '.'. $model->avatar->extension);
+            }
+            if($model->save(false)){
+                Yii::$app->session->setFlash('success','Pengguna berhasil ditambahkan.');
+                return $this->redirect('index');
+            }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
         }
 
         return $this->render('create', [
@@ -85,9 +111,23 @@ class UserController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $data = Yii::$app->request->post();
+        $gambar_sekarang = $model->avatar;
+        if ($model->load($data)) {
+            $gambar = UploadedFile::getInstance($model,'avatar');
+            if(isset($gambar)){
+                $gambar->saveAs(Yii::$app->basePath. '/web/images/avatar/'. $gambar->baseName. '.'. $gambar->extension);
+                $model->avatar = $gambar->baseName . '.' . $gambar->extension;
+            }
+            else{
+                $model->avatar = $gambar_sekarang;
+            }
+            $model->setPassword($model->password_hash);
+            if ($model->save(false)){
+                Yii::$app->session->setFlash('success','Pengguna berhasil diperbarui.');
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [

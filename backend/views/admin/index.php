@@ -20,15 +20,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php Pjax::begin(); ?>
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-            <p>
-                <?= Html::a('Create Admin', ['create'], ['class' => 'btn btn-success']) ?>
-            </p>
 
             <?= \fedemotta\datatables\DataTables::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'columns' => [
-                    ['class' => 'yii\grid\SerialColumn'],
+                    ['class' => 'yii\grid\SerialColumn','header' => 'No'],
 
                     //'id',
                     'username',
@@ -44,8 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     'status',
                     //'created_at',
                     //'updated_at',
-
-                    ['class' => 'yii\grid\ActionColumn'],
                 ],
             ]); ?>
             <?php Pjax::end(); ?>
