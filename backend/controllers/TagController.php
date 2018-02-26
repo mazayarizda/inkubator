@@ -104,7 +104,7 @@ class TagController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success',"Tag berhasil diperbarui.");
-            return $this->redirect(['view', 'id' => $model->id_tag]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [

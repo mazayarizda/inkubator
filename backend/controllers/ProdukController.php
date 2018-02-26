@@ -2,12 +2,17 @@
 
 namespace backend\controllers;
 
+use common\models\DetailProduk;
+use common\models\Tag;
 use Yii;
 use common\models\Produk;
 use common\models\ProdukSearch;
+use yii\base\Model;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProdukController implements the CRUD actions for Produk model.
@@ -64,14 +69,55 @@ class ProdukController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Produk();
+        $produk = new Produk();
+        $detail_produk = new DetailProduk();
+        $data_produk = Yii::$app->request->post();
+        $data_detail_produk = Yii::$app->request->post();
+        if ($produk->load($data_produk)) {
+            $produk->added_by = Yii::$app->user->getId();
+            if ($produk->video!=null){
+                $video = null;
+                preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/", $produk->video, $video);
+                $produk->video = $video[1];
+            }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_produk]);
+            $transaction = Yii::$app->db->beginTransaction();
+                if(!$produk->save()){
+
+                    $transaction->rollBack();
+                }
+                else{
+                    if($detail_produk->load($data_detail_produk,'')){
+                        $detail_produk->gambar = UploadedFile::getInstances($detail_produk,'gambar');
+
+                        foreach ($detail_produk->gambar as $gambar){
+                            $model = new DetailProduk();
+                            $model->id_produk = $produk->id_produk;
+                            $model->gambar = $gambar;
+                            if(!$model->save(false)){
+                                $transaction->rollBack();
+                            }
+                            else{
+                                $gambar->saveAs(Yii::$app->basePath. '/web/images/produk/'. $gambar->baseName. '.'. $gambar->extension);
+
+                            }
+
+                        }
+                        $transaction->commit();
+                        Yii::$app->session->setFlash('success','Berhasil Menambahkan Aplikasi.');
+                        return $this->redirect(['produk/index']);
+
+                    }
+
+                }
+
+
+
         }
 
         return $this->render('create', [
-            'model' => $model,
+            'produk' => $produk,
+            'detail_produk'=>$detail_produk
         ]);
     }
 
@@ -84,14 +130,57 @@ class ProdukController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $produk = $this->findModel($id);
+        $detail_produk = new DetailProduk();
+        $data = Yii::$app->request->post();
+        $data_detail_produk =Yii::$app->request->post();
+        if ($produk->load($data)) {
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_produk]);
+            //remove semua data detail dengan id sekian;
+            $db = Yii::$app->db;
+            $transaction = $db->beginTransaction();
+            $delete = $db->createCommand()->delete('detail_produk', [
+                'id_produk' => $id
+            ])->execute();
+
+            //tambahkan semua item.
+            if ($produk->video != null && strlen($produk->video) < 10) {
+                $video = null;
+                preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/", $produk->video, $video);
+                $produk->video = $video[1];
+            }
+            if (!$produk->save()) {
+
+                $transaction->rollBack();
+            } else {
+                if ($detail_produk->load($data_detail_produk, '')) {
+                    $detail_produk->gambar = UploadedFile::getInstances($detail_produk, 'gambar');
+
+                    foreach ($detail_produk->gambar as $gambar) {
+                        $model = new DetailProduk();
+                        $model->id_produk = $produk->id_produk;
+                        $model->gambar = $gambar;
+                        if (!$model->save(false)) {
+                            $transaction->rollBack();
+                        } else {
+                            $gambar->saveAs(Yii::$app->basePath . '/web/images/produk/' . $gambar->baseName . '.' . $gambar->extension);
+
+                        }
+
+                    }
+                    $transaction->commit();
+                    Yii::$app->session->setFlash('success', 'Berhasil Menambahkan Aplikasi.');
+                    return $this->redirect(['view', 'id' => $produk->id_produk]);
+
+                }
+
+            }
         }
 
         return $this->render('update', [
-            'model' => $model,
+            'produk' => $produk,
+            'detail_produk'=>$detail_produk,
+
         ]);
     }
 
@@ -123,5 +212,8 @@ class ProdukController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    public static function actionTagList(){
+        return Tag::find()->all();
     }
 }

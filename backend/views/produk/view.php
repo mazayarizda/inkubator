@@ -41,8 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         'video',
                         'status',
                         'added_by',
-                        'created_at',
-                        'updated_at',
+                        'created_at:datetime',
+                        'updated_at:datetime',
                     ],
                 ]) ?>
 

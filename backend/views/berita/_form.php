@@ -14,6 +14,8 @@ use yii\widgets\ActiveForm;
 
 <div class="berita-form">
 
+    <?php \yii\bootstrap\Modal::begin()?>
+    <?php \yii\bootstrap\Modal::end()?>
     <?php $form = ActiveForm::begin(['options' => ['enctype'=>'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'judul_berita')->textInput(['maxlength' => true]) ?>
@@ -23,6 +25,7 @@ use yii\widgets\ActiveForm;
             'autocomplete' => [
                 'source' => Url::toRoute(['tag/suggest'])
             ],
+
         ]
     ]) ?>
     <?= $form->field($model, 'isi_berita')->widget(TinyMce::className(), [
@@ -41,7 +44,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'gambar_berita')->widget(FileInput::className(),[
         'options'=>['accept'=>'image/*','multiple'=>false],
         'pluginOptions' => [
-            'initialPreview'=> '/inkubator/backend/web/images/'.$model->gambar_berita,
+            'initialPreview'=> isset($model->gambar_berita)? '/inkubator/backend/web/images/berita/'.$model->gambar_berita: false,
             'initialPreviewAsData'=>true,
             'initialCaption'=>$model->gambar_berita,
             'initialPreviewConfig' => [

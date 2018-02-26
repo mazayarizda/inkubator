@@ -80,6 +80,7 @@ class Berita extends \yii\db\ActiveRecord
         return [
             'id_berita' => 'Id Berita',
             'judul_berita' => 'Judul Berita',
+            'editorTags'=>'Tag',
             'isi_berita' => 'Isi Berita',
             'gambar_berita' => 'Gambar Berita',
             'penerbit_berita' => 'Penerbit Berita',

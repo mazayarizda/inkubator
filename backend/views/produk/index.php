@@ -9,6 +9,10 @@ use yii\widgets\Pjax;
 
 $this->title = 'Produk';
 $this->params['breadcrumbs'][] = $this->title;
+if(Yii::$app->session->hasFlash('success'))
+{
+    Yii::$app->session->getFlash('success');
+}
 ?>
 <div class="row">
     <div class="col-lg-12">
@@ -27,13 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
                     'columns' => [
-                        ['class' => 'yii\grid\SerialColumn'],
+                        ['class' => 'yii\grid\SerialColumn','header' => 'No'],
 
-                        'id_produk',
+                       // 'id_produk',
                         'nama_produk',
                         'developer',
-                        'deskripsi_produk:ntext',
-                        'fitur_produk',
+                        //'deskripsi_produk:ntext',
+                        //'fitur_produk',
                         //'spesifikasi',
                         //'harga',
                         //'video',
@@ -42,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         //'created_at',
                         //'updated_at',
 
-                        ['class' => 'yii\grid\ActionColumn'],
+                        ['class' => 'yii\grid\ActionColumn','header' => 'Aksi'],
                     ],
                 ]); ?>
                 <?php Pjax::end(); ?>
