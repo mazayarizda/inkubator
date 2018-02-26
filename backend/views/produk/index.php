@@ -20,7 +20,6 @@ if(Yii::$app->session->hasFlash('success'))
             <div class="produk-index">
 
                 <h4 class="header-title m-t-0 m-b-30"><?= Html::encode($this->title) ?></h4>
-                <?php Pjax::begin(); ?>
                 <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
                 <p>
@@ -49,7 +48,6 @@ if(Yii::$app->session->hasFlash('success'))
                         ['class' => 'yii\grid\ActionColumn','header' => 'Aksi'],
                     ],
                 ]); ?>
-                <?php Pjax::end(); ?>
             </div>
         </div>
 

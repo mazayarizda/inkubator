@@ -104,7 +104,7 @@ class ProdukController extends Controller
 
                         }
                         $transaction->commit();
-                        Yii::$app->session->setFlash('success','Berhasil Menambahkan Aplikasi.');
+                        Yii::$app->session->setFlash('success','Berhasil Menambahkan Produk.');
                         return $this->redirect(['produk/index']);
 
                     }
@@ -131,6 +131,7 @@ class ProdukController extends Controller
     public function actionUpdate($id)
     {
         $produk = $this->findModel($id);
+        $detail_sekarang = Yii::$app->db->createCommand('select * from detail_produk where id_produk = '.$id)->queryAll();
         $detail_produk = new DetailProduk();
         $data = Yii::$app->request->post();
         $data_detail_produk =Yii::$app->request->post();
@@ -139,9 +140,6 @@ class ProdukController extends Controller
             //remove semua data detail dengan id sekian;
             $db = Yii::$app->db;
             $transaction = $db->beginTransaction();
-            $delete = $db->createCommand()->delete('detail_produk', [
-                'id_produk' => $id
-            ])->execute();
 
             //tambahkan semua item.
             if ($produk->video != null && strlen($produk->video) < 10) {
@@ -155,21 +153,43 @@ class ProdukController extends Controller
             } else {
                 if ($detail_produk->load($data_detail_produk, '')) {
                     $detail_produk->gambar = UploadedFile::getInstances($detail_produk, 'gambar');
-
+                    $a = 0;
+                    $equal = true;
                     foreach ($detail_produk->gambar as $gambar) {
-                        $model = new DetailProduk();
-                        $model->id_produk = $produk->id_produk;
-                        $model->gambar = $gambar;
-                        if (!$model->save(false)) {
-                            $transaction->rollBack();
-                        } else {
-                            $gambar->saveAs(Yii::$app->basePath . '/web/images/produk/' . $gambar->baseName . '.' . $gambar->extension);
+                        if(!empty($detail_sekarang)){
+                            if($detail_sekarang[$a]['gambar'] != $gambar){
+                                $equal = false;
+                            }
 
                         }
+                        elseif(empty($detail_sekarang)){
+                            $model = new DetailProduk();
+                            $model->id_produk = $produk->id_produk;
+                            $model->gambar = $gambar;
+                            if (!$model->save(false)) {
+                                $transaction->rollBack();
+                            } else {
+                                $gambar->saveAs(Yii::$app->basePath . '/web/images/produk/' . $gambar->baseName . '.' . $gambar->extension);
 
+                            }
+                        }
+                        if($equal == false){
+                            $delete = $db->createCommand()->delete('detail_produk', [
+                                'id_produk' => $id
+                            ])->execute();
+                            $model = new DetailProduk();
+                            $model->id_produk = $produk->id_produk;
+                            $model->gambar = $gambar;
+                            if (!$model->save(false)) {
+                                $transaction->rollBack();
+                            } else {
+                                $gambar->saveAs(Yii::$app->basePath . '/web/images/produk/' . $gambar->baseName . '.' . $gambar->extension);
+
+                            }
+                        }
                     }
                     $transaction->commit();
-                    Yii::$app->session->setFlash('success', 'Berhasil Menambahkan Aplikasi.');
+                    Yii::$app->session->setFlash('success', 'Berhasil Memperbarui Produk.');
                     return $this->redirect(['view', 'id' => $produk->id_produk]);
 
                 }

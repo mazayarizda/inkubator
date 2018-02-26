@@ -8,57 +8,45 @@ $this->title = 'Beranda | Inkubator TIF';
 <!-- Start right Content here -->
 <!-- ============================================================== -->
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="card-box widget-user">
-                        <div>
-                            <img src="images/users/avatar-3.jpg" class="img-responsive img-circle" alt="user">
-                            <div class="wid-u-info">
-                                <h4 class="m-t-0 m-b-5 font-600">Chadengle</h4>
-                                <p class="text-muted m-b-5 font-13">coderthemes@gmail.com</p>
-                                <small class="text-warning"><b>Admin</b></small>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- end col -->
 
                 <div class="col-lg-3 col-md-6">
                     <div class="card-box widget-user">
-                        <div>
-                            <img src="images/users/avatar-2.jpg" class="img-responsive img-circle" alt="user">
-                            <div class="wid-u-info">
-                                <h4 class="m-t-0 m-b-5 font-600"> Michael Zenaty</h4>
-                                <p class="text-muted m-b-5 font-13">coderthemes@gmail.com</p>
-                                <small class="text-custom"><b>Support Lead</b></small>
-                            </div>
+                        <div class="text-center">
+                            <h2 class="text-warning" data-plugin="counterup"><?php $a = Yii::$app->db->createCommand('select count(*) as total_produk from produk')->queryAll(); echo $a[0]['total_produk'] ?></h2>
+                            <h5>Jumlah Produk</h5>
                         </div>
                     </div>
-                </div><!-- end col -->
+                </div>
+
 
                 <div class="col-lg-3 col-md-6">
                     <div class="card-box widget-user">
-                        <div>
-                            <img src="images/users/avatar-1.jpg" class="img-responsive img-circle" alt="user">
-                            <div class="wid-u-info">
-                                <h4 class="m-t-0 m-b-5 font-600">Stillnotdavid</h4>
-                                <p class="text-muted m-b-5 font-13">coderthemes@gmail.com</p>
-                                <small class="text-success"><b>Designer</b></small>
-                            </div>
+                        <div class="text-center">
+                            <h2 class="text-custom" data-plugin="counterup"><?php $a = Yii::$app->db->createCommand('select count(*) as total_berita from berita')->queryAll(); echo $a[0]['total_berita'] ?></h2>
+                            <h5>Jumlah berita</h5>
                         </div>
                     </div>
-                </div><!-- end col -->
+                </div>
+               <!-- end col -->
+
 
                 <div class="col-lg-3 col-md-6">
                     <div class="card-box widget-user">
-                        <div>
-                            <img src="images/users/avatar-10.jpg" class="img-responsive img-circle" alt="user">
-                            <div class="wid-u-info">
-                                <h4 class="m-t-0 m-b-5 font-600">Tomaslau</h4>
-                                <p class="text-muted m-b-5 font-13">coderthemes@gmail.com</p>
-                                <small class="text-info"><b>Developer</b></small>
-                            </div>
+                        <div class="text-center">
+                            <h2 class="text-success" data-plugin="counterup"><?php $a = Yii::$app->db->createCommand('select count(*) as total_pengguna from user')->queryAll(); echo $a[0]['total_pengguna'] ?></h2>
+                            <h5>Jumlah Pengguna</h5>
                         </div>
                     </div>
-                </div><!-- end col -->
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-box widget-user">
+                        <div class="text-center">
+                            <h2 class="text-danger" data-plugin="counterup"><?php $a = Yii::$app->db->createCommand('select count(*) as total_tag from tag ')->queryAll(); echo $a[0]['total_tag'] ?></h2>
+                            <h5>Jumlah Tag</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- end row -->
 

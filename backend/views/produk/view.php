@@ -39,8 +39,22 @@ $this->params['breadcrumbs'][] = $this->title;
                         'spesifikasi',
                         'harga',
                         'video',
-                        'status',
-                        'added_by',
+                        [
+                                'attribute'=>'status',
+                            'type'=>'raw',
+                            'value'=>function($model){
+                                if($model->status == 10) return 'Aktif';
+                                else return 'Tidak Aktif';
+                            }
+                        ],
+                        [
+                            'attribute'=>'added_by',
+                            'type'=>'raw',
+                            'value'=>function($model){
+                                $nama = Yii::$app->db->createCommand('Select username from admin where id = '.$model->added_by)->queryAll();
+                                return $nama[0]['username'];
+                            }
+                        ],
                         'created_at:datetime',
                         'updated_at:datetime',
                     ],
