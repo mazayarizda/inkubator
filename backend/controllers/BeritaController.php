@@ -74,7 +74,7 @@ class BeritaController extends Controller
 
         if ($model->load($data)) {
             if ($model->gambar_berita != NULL){
-                $model->gambar_berita->saveAs(Yii::$app->basePath. '/web/images/'. $model->gambar_berita->baseName. '.'. $model->gambar_berita->extension);
+                $model->gambar_berita->saveAs(Yii::$app->basePath. '/web/images/berita/'. $model->gambar_berita->baseName. '.'. $model->gambar_berita->extension);
 
             }
             else{
@@ -109,7 +109,7 @@ class BeritaController extends Controller
         if ($model->load($data)) {
             $gambar = UploadedFile::getInstance($model,'gambar_berita');
             if(isset($gambar)){
-                $gambar->saveAs(Yii::$app->basePath. '/web/images/'. $gambar->baseName. '.'. $gambar->extension);
+                $gambar->saveAs(Yii::$app->basePath. '/web/images/berita/'. $gambar->baseName. '.'. $gambar->extension);
                 $model->gambar_berita = $gambar->baseName . '.' . $gambar->extension;
             }
             else{

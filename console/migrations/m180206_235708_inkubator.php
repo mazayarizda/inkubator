@@ -95,7 +95,7 @@ class m180206_235708_inkubator extends Migration
         //create table detail produk
         $this->createTable('detail_produk',[
             'id_produk'=>$this->integer(),
-            'gambar'=>$this->string()
+            'gambar'=>$this->string(),
 
         ],$tableOptions);
 

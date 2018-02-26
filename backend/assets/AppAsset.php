@@ -20,15 +20,18 @@ class AppAsset extends AssetBundle
         'css/responsive.css',
         'css/variables.css',
         'css/pace-theme-flash.css',
+        'plugins/jquery-ui/jquery-ui.css',
+        'plugins/css/animate.css',
 
     ];
     public $js = [
+
         'js/detect.js',
         'js/yii_override.js',
+        'plugins/waypoints/lib/jquery.waypoints.js',
+        'plugins/counterup/jquery.counterup.min.js',
         'js/fastclick.js',
-        'js/jquery.app.js',
         'js/jquery.blockUI.js',
-        'js/jquery.core.js',
         'js/jquery.nicescroll.js',
         'js/jquery.scrollTo.min.js',
         'js/jquery.slimscroll.js',
@@ -36,16 +39,20 @@ class AppAsset extends AssetBundle
         'js/pace.min.js',
         'js/waves.js',
         'js/wow.min.js',
-        'https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js',
-        'https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js',
+        'plugins/jquery-knob/jquery.knob.js',
+        'plugins/jquery-ui/jquery-ui.js',
+        'plugins/raphael/raphael.min.js',
+        'plugins/moment/moment.js',
+        'js/jquery.app.js',
+        'js/jquery.core.js',
 
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        'yii\web\JqueryAsset',
         'yii2mod\alert\AlertAsset',
         'sjaakp\taggable\TagEditorAsset',
-        'kartik\file\PiExifAsset'
+        'kartik\file\PiExifAsset',
+        'fedemotta\datatables\DataTablesBootstrapAsset',
     ];
 }

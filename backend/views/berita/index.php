@@ -39,13 +39,13 @@ if(Yii::$app->session->hasFlash('success'))
 
                         //'id_berita',
                         'judul_berita',
-                        'isi_berita:ntext',
+                        //'isi_berita:ntext',
                         [
                             'attribute'=>'gambar_berita',
                             'format'=>'raw',
                             'value'=> function($model) {
                                 $modal = '
-                                    <button class="btn btn-default waves-effect waves-light" data-toggle="modal" data-target="#photo-' . $model->id_berita . '"><img src="/inkubator/backend/web/images/' . $model->gambar_berita . '" width="30px" height="30px"></button>
+                                    <button class="btn btn-default waves-effect waves-light" data-toggle="modal" data-target="#photo-' . $model->id_berita . '"><img src="/inkubator/backend/web/images/berita/' . $model->gambar_berita . '" width="30px" height="30px"></button>
                                     
                                     <div id="photo-' . $model->id_berita . '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="#modal-' . $model->id_berita . '" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -55,7 +55,7 @@ if(Yii::$app->session->hasFlash('success'))
                                                     <h4 class="modal-title" id="modal-' . $model->id_berita . '">' . $model->judul_berita . '</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                   <img class="center-block" src="/inkubator/backend/web/images/' . $model->gambar_berita . '"  width="75%" height="75%"/>
+                                                   <img class="center-block" src="/inkubator/backend/web/images/berita/' . $model->gambar_berita . '"  width="75%" height="75%"/>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
@@ -68,12 +68,12 @@ if(Yii::$app->session->hasFlash('success'))
                             }
                         ],
                         //'penerbit_berita',
+                        'created_at:datetime',
 
                         ['class' => 'yii\grid\ActionColumn','header' => 'Aksi'],
                     ],
                 ]); ?>
                 <?php Pjax::end(); ?>
-                <button class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#myModal">Standard Modal</button>
             </div>
         </div>
 

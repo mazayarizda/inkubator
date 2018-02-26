@@ -23,8 +23,8 @@ if(Yii::$app->session->hasFlash('success')){
             <div class="tag-view">
 
                 <p>
-                    <?= Html::a('Update', ['update', 'id' => $model->id_tag], ['class' => 'btn btn-primary']) ?>
-                    <?= Html::a('Delete', ['delete', 'id' => $model->id_tag], [
+                    <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a('Delete', ['delete', 'id' => $model->id], [
                         'class' => 'btn btn-danger',
                         'data' => [
                             'confirm' => 'Apakah anda yakin menghapus item ini?',

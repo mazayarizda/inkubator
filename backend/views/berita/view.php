@@ -46,7 +46,7 @@ if(Yii::$app->session->hasFlash('success'))
                             'format'=>'raw',
                             'value'=> function($model) {
                                 $modal = '
-                                    <button class="btn btn-default waves-effect waves-light" data-toggle="modal" data-target="#photo-' . $model->id_berita . '"><img src="/inkubator/backend/web/images/' . $model->gambar_berita . '" width="30px" height="30px"></button>
+                                    <button class="btn btn-default waves-effect waves-light" data-toggle="modal" data-target="#photo-' . $model->id_berita . '"><img src="/inkubator/backend/web/images/berita/' . $model->gambar_berita . '" width="30px" height="30px"></button>
                                     
                                     <div id="photo-' . $model->id_berita . '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="#modal-' . $model->id_berita . '" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -56,7 +56,7 @@ if(Yii::$app->session->hasFlash('success'))
                                                     <h4 class="modal-title" id="modal-' . $model->id_berita . '">' . $model->judul_berita . '</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                   <img class="center-block" src="/inkubator/backend/web/images/' . $model->gambar_berita . '"  width="75%" height="75%"/>
+                                                   <img class="center-block" src="/inkubator/backend/web/images/berita/' . $model->gambar_berita . '"  width="75%" height="75%"/>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
@@ -69,8 +69,8 @@ if(Yii::$app->session->hasFlash('success'))
                             }
                         ],
                         'penerbit_berita',
-                        'created_at',
-                        'updated_at'
+                        'created_at:datetime',
+                        'updated_at:datetime'
                     ],
                 ]) ?>
 
@@ -81,3 +81,35 @@ if(Yii::$app->session->hasFlash('success'))
 </div>
 
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div class="berita-view">
+                    <h3 class="m-t-0 m-b-30"><?= Html::encode($this->title) ?> </h3>
+                        <div class="alert alert-primary">
+                            <p><span class="pull-left">Tags : <?= $model->tagLinks ?></span>
+                            <span class="pull-right">Oleh: <?=\backend\models\Admin::findOne(['id'=>$model->penerbit_berita])->nama?> </span></p>
+                        </div>
+
+                    <br>
+                   <div class="container">
+                       <img class="center-block" src="/inkubator/backend/web/images/<?=$model->gambar_berita?>"  width="75%" height="75%"/>
+                   </div>
+                    <div class="clearfix"></div>
+                    <br>
+                    <hr>
+                    <?= $model->isi_berita ?>
+                    <br>
+                    <hr>
+                    <div class="alert alert-primary">
+                        <p><span class="pull-left">Dibuat Tanggal : <?= $model->created_at ?></span>
+                            <span class="pull-right">Diperbarui Tanggal : <?= $model->updated_at ?></span></p>
+                    </div>
+
+                </div>
+
+
+        </div>
+
+    </div><!-- end col -->
+</div>
