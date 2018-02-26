@@ -7,9 +7,12 @@ use backend\assets\AppAsset;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\web\View;
 
 
 AppAsset::register($this);
+$this->registerAssetBundle(yii\web\JqueryAsset::className(), View::POS_HEAD);
+$this->registerJsFile('@web/js/jquery.min.js');
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => '/inkubator/backend/web/favicon.ico']);
 ?>
 <?php $this->beginPage() ?>
