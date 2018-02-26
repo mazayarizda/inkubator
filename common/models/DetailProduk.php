@@ -29,8 +29,9 @@ class DetailProduk extends \yii\db\ActiveRecord
     {
         return [
             [['id_produk'], 'integer'],
-            [['gambar'], 'string', 'max' => 255],
+            [['gambar'], 'file','maxFiles' => 10,'skipOnEmpty' => true],
             [['id_produk'], 'exist', 'skipOnError' => true, 'targetClass' => Produk::className(), 'targetAttribute' => ['id_produk' => 'id_produk']],
+
         ];
     }
 

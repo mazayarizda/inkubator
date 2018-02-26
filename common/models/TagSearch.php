@@ -18,7 +18,7 @@ class TagSearch extends Tag
     public function rules()
     {
         return [
-            [['id_tag'], 'integer'],
+            [['id'], 'integer'],
             [['nama_tag', 'created_at', 'updated_at'], 'safe'],
         ];
     }
@@ -59,7 +59,7 @@ class TagSearch extends Tag
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id_tag' => $this->id_tag,
+            'id' => $this->id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

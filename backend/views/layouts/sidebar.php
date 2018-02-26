@@ -24,7 +24,7 @@ $controllerName = substr($route,0,strpos($route,'/'));
             <h5><a href="#"><?= Yii::$app->user->identity->nama ?></a> </h5>
             <ul class="list-inline">
                 <li>
-                    <?= Html::a(' <i class="zmdi zmdi-settings"></i>','/inkubator/backend/web/admin/'.Yii::$app->user->getId(),['class'=> 'btn btn-link']) ?>
+                    <?= Html::a(' <i class="zmdi zmdi-settings"></i>','/inkubator/backend/web/admin/view',['class'=> 'btn btn-link']) ?>
                 </li>
 
                 <li>
@@ -53,7 +53,6 @@ $controllerName = substr($route,0,strpos($route,'/'));
                         ['label'=>'Produk   ', 'icon'=>'zmdi-code','url'=>['/produk'],'template'=>$controllerName == 'produk'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Berita', 'icon'=>'zmdi-blogger','url'=>['/berita'],'template'=>$controllerName == 'berita'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Tag', 'icon'=>'zmdi-tag','url'=>['/tag'],'template'=>$controllerName == 'tag'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
-                        ['label'=>'Admin', 'icon'=>'zmdi-account-circle','url'=>['/admin'],'template'=>$controllerName == 'admin'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Pengguna', 'icon'=>'zmdi-accounts','url'=>['/user'],'template'=>$controllerName == 'user'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                     ]
                 ]

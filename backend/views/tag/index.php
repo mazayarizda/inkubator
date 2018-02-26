@@ -14,7 +14,6 @@ if(Yii::$app->session->hasFlash('success'))
    Yii::$app->session->getFlash('success');
 }
 ?>
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-box">
@@ -33,15 +32,21 @@ if(Yii::$app->session->hasFlash('success'))
                             'dataProvider' => $dataProvider,
                             'filterModel' => $searchModel,
                             'columns' => [
-                                ['class' => 'yii\grid\SerialColumn'],
+                                ['class' => 'yii\grid\SerialColumn','header' => 'No'],
 
                                 //'id_tag',
                                 'nama_tag',
                                 'created_at:date',
                                 'updated_at:date',
 
-                                ['class' => 'yii\grid\ActionColumn'],
+                                ['class' => 'yii\grid\ActionColumn','header' => 'Aksi'],
                             ],
+                            'clientOptions' => [
+                                'responsive'=>true,
+                                'info'=>true,
+
+                            ],
+
                         ]); ?>
                         <?php Pjax::end(); ?>
                     </div>

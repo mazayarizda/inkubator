@@ -22,7 +22,7 @@ $fieldOptions2 = [
 <div class="clearfix"></div>
 <div class="wrapper-page">
     <div class="text-center">
-        <a href="index" class="logo"><span>Inkubator<span>TIF</span></span></a>
+        <a href="/inkubator/backend/web" class="logo"><span>Inkubator<span> TIF</span></span></a>
         <h5 class="text-muted m-t-0 font-600">Universitas Islam Negeri Sultan Syarif Kasim Riau.</h5>
     </div>
     <div class="m-t-40 card-box">
@@ -44,7 +44,7 @@ $fieldOptions2 = [
                     <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
                     <div class="form-group">
-                        <?= Html::submitButton('Login', ['class'=>['btn btn-primary btn-trans col-xs-12'], 'name' => 'login-button']) ?>
+                        <?= Html::submitButton('Login', ['class'=>['btn btn-primary btn-bordred col-xs-12'], 'name' => 'login-button']) ?>
                     </div>
 
                     <?php ActiveForm::end(); ?>
