@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m190227_182429_tag_beritaDataInsert extends Migration
+class m190227_182437_tag_beritaDataInsert extends Migration
 {
 
     public function init()
