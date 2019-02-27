@@ -7,7 +7,7 @@
  */?>
 
 <footer class="footer text-right">
-    &copy; <script>document.write(new Date().getFullYear())</script> Mazaya Rizda.
+    &copy; <script>document.write(new Date().getFullYear())</script> Inkubator.
 </footer>
 
 </div>

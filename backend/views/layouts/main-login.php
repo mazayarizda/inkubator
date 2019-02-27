@@ -8,7 +8,7 @@
 use backend\assets\AppAsset;
 use yii\helpers\Html;
 AppAsset::register($this);
-$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => '/inkubator/backend/web/favicon.ico']);
+$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => '/admin/favicon.ico']);
 
 ?>
 <?php $this->beginPage() ?>

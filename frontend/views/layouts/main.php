@@ -1,48 +1,72 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: adryanev
+ * Date: 26/02/19
+ * Time: 20:40
+ */
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use frontend\assets\AppAsset;
-use common\widgets\Alert;
+\frontend\assets\BinmpAsset::register($this);
 
-AppAsset::register($this);
-?>
-<?php $this->beginPage() ?>
+use yii\helpers\Html; ?>
+<?php $this->beginPage()?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-
-    <title>TIF | Inkubator TIF</title>
-    <link rel="shortcut icon" href="images/u.png">
-    <!--/tags -->
+    <meta charset="UTF-8" />
+    <title><?= Html::encode($this->title)?></title>
+    <!-- mobile responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Elite Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <meta name="keywords" content="Top aplikasi" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120235453-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    <!-- //for bootstrap working -->
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
-    <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
-
+        gtag('config', 'UA-120235453-1');
+    </script>
     <?= Html::csrfMetaTags() ?>
+
     <?php $this->head() ?>
+
 </head>
+
 <body>
 <?php $this->beginBody() ?>
-<?= $this->render('header') ?>
-<?= $this->render('navigation') ?>
-<?= $this->render('carousel') ?>
-<?= $this->render('isi_utama') ?>
-<?= $this->render('footer') ?>
+<div class="preloader"><div class="spinner"></div></div> <!-- /.preloader -->
 
-<?php $this->endBody() ?>
+<?= $this->render('header') ?>
+
+<?= $this->render('content-main',['content'=>$content]) ?>
+
+<?= $this->render('footer')?>
+
+<?php $this->endBody()?>
+
 </body>
 </html>
 <?php $this->endPage() ?>

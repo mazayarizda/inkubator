@@ -22,6 +22,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'judul_berita') ?>
 
+    <?= $form->field($model, 'inti_berita') ?>
+
     <?= $form->field($model, 'isi_berita') ?>
 
     <?= $form->field($model, 'gambar_berita') ?>

@@ -20,6 +20,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'judul_berita')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'inti_berita')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'editorTags')->widget(TagEditor::className(), [
         'tagEditorOptions' => [
             'autocomplete' => [
@@ -44,7 +46,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'gambar_berita')->widget(FileInput::className(),[
         'options'=>['accept'=>'image/*','multiple'=>false],
         'pluginOptions' => [
-            'initialPreview'=> isset($model->gambar_berita)? '/inkubator/backend/web/images/berita/'.$model->gambar_berita: false,
+            'initialPreview'=> isset($model->gambar_berita)? Yii::$app->urlManager->getBaseUrl().'/images/berita/'.$model->gambar_berita: false,
             'initialPreviewAsData'=>true,
             'initialCaption'=>$model->gambar_berita,
             'initialPreviewConfig' => [

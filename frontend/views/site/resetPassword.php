@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>Please choose your new password:</p>
 
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-md-12">
             <?php $form = ActiveForm::begin(['id' => 'reset-password-form']); ?>
 
                 <?= $form->field($model, 'password')->passwordInput(['autofocus' => true]) ?>
