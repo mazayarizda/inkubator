@@ -8,6 +8,7 @@ use backend\models\AdminSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use yii\web\UploadedFile;
 
 /**
@@ -21,6 +22,16 @@ class AdminController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['create','view','delete' ,'index','update'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -58,20 +69,32 @@ class AdminController extends Controller
         $model = $this->findModel($id);
         $data = Yii::$app->request->post();
         $gambar_sekarang = $model->avatar;
+        $currentPass = $model->password_hash;
+        $currentTempatLahir = $model->tempat_lahir;
+        $currentTanggalLahir = $model->tanggal_lahir;
+        $currentAlamat = $model->alamat;
         if ($model->load($data)) {
+        	$pass = Yii::$app->request->post('Admin')['password_hash'];
             $gambar = UploadedFile::getInstance($model,'avatar');
-            if(isset($gambar)){
-                $gambar->saveAs(Yii::$app->basePath. '/web/images/avatar/'. $gambar->baseName. '.'. $gambar->extension);
+            if($gambar!=null){
+                $gambar->saveAs(Yii::getAlias('@webroot').'/images/avatar/'. $gambar->baseName. '.'. $gambar->extension);
                 $model->avatar = $gambar->baseName . '.' . $gambar->extension;
             }
             else{
                 $model->avatar = $gambar_sekarang;
             }
-            $model->setPassword($model->password_hash);
-            if ($model->save(false)){
-                Yii::$app->session->setFlash('success','Pengguna berhasil diperbarui.');
-                return $this->redirect(['view', 'id' => $model->id]);
+
+
+            if($currentPass != $pass){
+            	$model->password_hash = Yii::$app->security->generatePasswordHash($pass);
+            }else{
+            	$model->password_hash = $currentPass;
             }
+
+            $model->save(false);
+                Yii::$app->session->setFlash('success','Admin berhasil diperbarui.');
+                return $this->redirect(['view', 'id' => $model->id]);
+
 
         }
 

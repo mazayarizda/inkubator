@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'format'=>'raw',
                             'value'=> function($model) {
                                 $modal = '
-                                    <button class="btn btn-default waves-effect waves-light" data-toggle="modal" data-target="#photo-' . $model->id . '"><img src="/inkubator/backend/web/images/avatar/' . $model->avatar . '" width="30px" height="30px"></button>
+                                    <button class="btn btn-default waves-effect waves-light" data-toggle="modal" data-target="#photo-' . $model->id . '"><img src="/admin/images/avatar/' . $model->avatar . '" width="30px" height="30px"></button>
                                     
                                     <div id="photo-' . $model->id . '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="#modal-' . $model->id . '" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     <h4 class="modal-title" id="modal-' . $model->id . '">' . $model->username . '</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                   <img class="center-block" src="/inkubator/backend/web/images/avatar/' . $model->avatar . '"  width="75%" height="75%"/>
+                                                   <img class="center-block" src="/admin/images/avatar/' . $model->avatar . '"  width="75%" height="75%"/>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
@@ -71,6 +71,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         'tempat_lahir',
                         'tanggal_lahir:date',
                         'alamat',
+                        'job',
+                        'instansi',
                         'status',
                         'created_at:datetime',
                         'updated_at:datetime',
@@ -80,6 +82,27 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
 
+    </div><!-- end col -->
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div class="user-view">
+                <h3 class="m-t-0 m-b-30"><?= Html::encode("Avatar User") ?> </h3>
+                <div class="alert alert-primary">
+                </div>
+                <br>
+
+                <div class="container">
+                    <?php
+                    foreach($avatar as $g){
+                        echo '<img class="center-block" src="/inkubator/admin/images/avatar/'.$g['avatar'].'"  width="75%" height="75%"/>';
+                    }
+                    ?>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
     </div><!-- end col -->
 </div>
 

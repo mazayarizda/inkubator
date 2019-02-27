@@ -40,13 +40,20 @@ if(Yii::$app->session->hasFlash('success'))
                     'attributes' => [
                         'id_berita',
                         'judul_berita',
-                        'isi_berita:ntext',
+                        'inti_berita',
+
+                        ['attribute'=>'isi_berita',
+                            'format'=>'raw',
+                            'value'=>function($model){
+                                $a = \yii\helpers\HtmlPurifier::process($model->isi_berita);
+                                return $a;
+                            }],
                         [
                             'attribute'=>'gambar_berita',
                             'format'=>'raw',
                             'value'=> function($model) {
                                 $modal = '
-                                    <button class="btn btn-default waves-effect waves-light" data-toggle="modal" data-target="#photo-' . $model->id_berita . '"><img src="/inkubator/backend/web/images/berita/' . $model->gambar_berita . '" width="30px" height="30px"></button>
+                                    <button class="btn btn-default waves-effect waves-light" data-toggle="modal" data-target="#photo-' . $model->id_berita . '"><img src="/admin/images/berita/' . $model->gambar_berita . '" width="30px" height="30px"></button>
                                     
                                     <div id="photo-' . $model->id_berita . '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="#modal-' . $model->id_berita . '" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -56,7 +63,7 @@ if(Yii::$app->session->hasFlash('success'))
                                                     <h4 class="modal-title" id="modal-' . $model->id_berita . '">' . $model->judul_berita . '</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                   <img class="center-block" src="/inkubator/backend/web/images/berita/' . $model->gambar_berita . '"  width="75%" height="75%"/>
+                                                   <img class="center-block" src="/admin/images/berita/' . $model->gambar_berita . '"  width="75%" height="75%"/>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
@@ -68,7 +75,7 @@ if(Yii::$app->session->hasFlash('success'))
                                 return $modal;
                             }
                         ],
-                        'penerbit_berita',
+                        'penerbitBerita.nama',
                         'created_at:datetime',
                         'updated_at:datetime'
                     ],
@@ -93,7 +100,7 @@ if(Yii::$app->session->hasFlash('success'))
 
                     <br>
                    <div class="container">
-                       <img class="center-block" src="/inkubator/backend/web/images/<?=$model->gambar_berita?>"  width="75%" height="75%"/>
+                       <img class="center-block" src="/inkubator/admin/images/berita/<?=$model->gambar_berita?>"  width="75%" height="75%"/>
                    </div>
                     <div class="clearfix"></div>
                     <br>

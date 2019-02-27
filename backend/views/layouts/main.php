@@ -13,7 +13,7 @@ use yii\web\View;
 AppAsset::register($this);
 $this->registerAssetBundle(yii\web\JqueryAsset::className(), View::POS_HEAD);
 $this->registerJsFile('@web/js/jquery.min.js');
-$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => '/inkubator/backend/web/favicon.ico']);
+$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => '/admin/favicon.ico']);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

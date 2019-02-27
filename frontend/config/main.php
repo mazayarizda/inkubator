@@ -8,7 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
-    'name'=>'TIF | Inkubator TIF',
+    'name'=>'TopApp.id',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
@@ -49,6 +49,16 @@ return [
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
+        ],
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'basePath' => '@webroot',
+                    'baseUrl' => '@web',
+                    'js'=>['js/jquery.js'],
+                ],
+
+            ],
         ],
     ],
     'params' => $params,

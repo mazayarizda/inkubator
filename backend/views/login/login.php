@@ -22,8 +22,8 @@ $fieldOptions2 = [
 <div class="clearfix"></div>
 <div class="wrapper-page">
     <div class="text-center">
-        <a href="/inkubator/backend/web" class="logo"><span>Inkubator<span> TIF</span></span></a>
-        <h5 class="text-muted m-t-0 font-600">Universitas Islam Negeri Sultan Syarif Kasim Riau.</h5>
+        <a href="/admin/" class="logo"><span>TOPAPP<span>.ID</span></span></a>
+        <h5 class="text-muted m-t-0 font-600">Admin Backend.</h5>
     </div>
     <div class="m-t-40 card-box">
         <div class="panel-body">

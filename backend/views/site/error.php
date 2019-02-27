@@ -24,7 +24,7 @@ $substring = substr($name,$posTag+1,'3');
             Mohon hubungi kami jika ini merupakan kesalahan pada server. Terima Kasih.
         </p>
         <br>
-        <?=Html::button('Kembali',['class'=>'btn btn-success waves-effect waves-light','url'=>'/inkubator/backend/web']) ?>
+        <?=Html::a('Kembali',\yii\helpers\Url::toRoute(['site/index']),['class'=>'btn btn-success waves-effect waves-light']) ?>
     </div>
 </div>
 <!-- End wrapper page -->

@@ -1,6 +1,15 @@
 <?php
 namespace frontend\controllers;
 
+use Carbon\Carbon;
+use common\models\Berita;
+use common\models\DetailProduk;
+use common\models\Kategori;
+use common\models\Produk;
+use common\models\Order;
+use common\models\Profil;
+use common\models\Tag;
+use common\models\TagBerita;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -11,7 +20,7 @@ use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
-use frontend\models\ContactForm;
+
 
 /**
  * Site controller
@@ -26,8 +35,13 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only' => ['produk','logout', 'signup'],
                 'rules' => [
+                    [
+                        'actions'=>['produk'],
+                        'allow'=>true,
+                        'roles'=>['@']
+                    ],
                     [
                         'actions' => ['signup'],
                         'allow' => true,
@@ -65,6 +79,7 @@ class SiteController extends Controller
         ];
     }
 
+
     /**
      * Displays homepage.
      *
@@ -72,7 +87,78 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $this->layout='main-landing';
+        $produk = Produk::find()->where(['status'=>10])->orderBy('created_at DESC')->limit(6)->all();
+        $berita = Berita::find()->orderBy('created_at DESC')->limit(6)->all();
+        return $this->render('index', [
+            'product'=>$produk,
+            'berita'=>$berita
+        ]);
+    }
+
+
+    public function actionProfil()
+    {
+        return $this->render('profil');
+    }
+
+    public function actionContact()
+    {
+    	$profil = Profil::findOne(1);
+        return $this->render( 'contact',[ 'profil' =>$profil]);
+    }
+
+    public function actionKategori($id)
+    {
+        $kategoris =Kategori::find()->all();
+        if($id != 0){
+              $kat = Kategori::findOne(['id_kategori'=>$id]);
+        
+        $produks = Produk::find()->where(['kategori_produk'=>$id,'status'=>10])->all();
+        }
+        else{
+            $produks = Produk::find()->where(['status'=>10])->all();
+            $kat = null;
+        }
+      
+
+
+        return $this->render('kategori',['kat'=>$kat,'kategoris'=>$kategoris,'produks'=>$produks]);
+    }
+
+
+
+    public function actionSemuaBerita()
+    {
+        return $this->render('allberita');
+    }
+
+    public function actionHowTo()
+    {
+        return $this->render('howto');
+    }
+
+
+
+    public function actionBerita($id)
+    {
+        $berita = Berita::findOne(['id_berita'=>$id]);
+        return $this->render('berita',[
+            'berita'=>$berita,
+        ]);
+    }
+
+    public function actionProduk($id)
+    {
+        $produk = Produk::findOne(['id_produk'=>$id]);
+        $gambar = DetailProduk::find()->where(['id_produk'=>$id])->all();
+//        echo '<pre>';
+//        print_r($gambar);
+//        exit();
+        return $this->render('produk',[
+            'produk'=>$produk,
+            'gambar'=>$gambar
+        ]);
     }
 
     /**
@@ -82,6 +168,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout='main-login';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -113,23 +200,23 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-            } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
-            }
+    //public function actionContact()
+    //{
+      //  $model = new ContactForm();
+        //if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+          //  if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
+            //    Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+            //} else {
+              //  Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+            //}
 
-            return $this->refresh();
-        } else {
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
-        }
-    }
+            //return $this->refresh();
+        //} else {
+          //  return $this->render('contact', [
+            //    'model' => $model,
+            //]);
+        //}
+   // }
 
     /**
      * Displays about page.
@@ -148,12 +235,11 @@ class SiteController extends Controller
      */
     public function actionSignup()
     {
+        $this->layout = 'main-login';
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
                     return $this->goHome();
-                }
             }
         }
 
@@ -209,5 +295,19 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+    public function actionTags($id){
+	    $tag = Tag::findOne($id);
+	    $model = TagBerita::find()->where(['id_tag'=>$id])->all();
+	    $data = [];
+
+	    foreach ($model as $mod){
+		    $berita = Berita::findOne(['id_berita'=>$mod->id_berita]);
+		    array_push($data,$berita);
+	    }
+//	    echo '<pre>';
+//		print_r($data);
+//		exit();
+	    return $this->render('tag',['model'=>$data,'tag'=>$tag]);
     }
 }

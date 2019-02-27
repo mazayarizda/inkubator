@@ -18,13 +18,13 @@ $controllerName = substr($route,0,strpos($route,'/'));
         <div class="user-box">
             <div class="user-img">
 
-                <img src="/inkubator/backend/web/images/users/<?=Yii::$app->user->identity->avatar?>" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
-                <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
+                <img src="<?=Yii::$app->urlManager->getBaseUrl()?>/images/avatar/<?= Yii::$app->user->identity->avatar?>" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+                <div class="user-status online"><i class="zmdi zmdi-dot-circle"></i></div>
             </div>
             <h5><a href="#"><?= Yii::$app->user->identity->nama ?></a> </h5>
             <ul class="list-inline">
                 <li>
-                    <?= Html::a(' <i class="zmdi zmdi-settings"></i>','/inkubator/backend/web/admin/view',['class'=> 'btn btn-link']) ?>
+                    <?= Html::a(' <i class="zmdi zmdi-settings"></i>',\yii\helpers\Url::toRoute(['admin/view']),['class'=> 'btn btn-link']) ?>
                 </li>
 
                 <li>
@@ -52,8 +52,14 @@ $controllerName = substr($route,0,strpos($route,'/'));
                         ['label'=>'Beranda', 'icon'=>'zmdi-view-dashboard','url'=>['/site'],'template'=>$controllerName == 'site'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Produk   ', 'icon'=>'zmdi-code','url'=>['/produk'],'template'=>$controllerName == 'produk'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Berita', 'icon'=>'zmdi-blogger','url'=>['/berita'],'template'=>$controllerName == 'berita'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
+                        ['label'=>'Team', 'icon'=>'zmdi-account-circle','url'=>['/team'],'template'=>$controllerName == 'team'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Tag', 'icon'=>'zmdi-tag','url'=>['/tag'],'template'=>$controllerName == 'tag'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Pengguna', 'icon'=>'zmdi-accounts','url'=>['/user'],'template'=>$controllerName == 'user'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
+                        ['label'=>'Carousel', 'icon'=>'zmdi-landscape','url'=>['/carousel'],'template'=>$controllerName == 'carousel'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
+                        ['label'=>'Order', 'icon'=>'zmdi-shopping-cart','url'=>['/order'],'template'=>$controllerName == 'order'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
+                        ['label'=>'Kategori', 'icon'=>'zmdi-local-offer','url'=>['/kategori'],'template'=>$controllerName == 'kategori'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
+                        ['label'=>'Profil', 'icon'=>'zmdi-file','url'=>['/profil'],'template'=>$controllerName == 'profil'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
+
                     ]
                 ]
             ) ?>

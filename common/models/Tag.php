@@ -45,7 +45,7 @@ class Tag extends \yii\db\ActiveRecord
             ],
             'tag'=>[
                 'class' => TagBehavior::className(),
-                'junctionTable' => 'tag_berita',
+                'junctionTable' => ['tag_berita'],
                 'nameAttribute' => 'nama_tag',
                 'tagKeyAttribute' => 'id_tag',
 

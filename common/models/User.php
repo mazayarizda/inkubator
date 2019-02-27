@@ -60,7 +60,6 @@ class User extends ActiveRecord implements IdentityInterface
             ],
         ];
     }
-
     /**
      * @inheritdoc
      */
@@ -82,8 +81,11 @@ class User extends ActiveRecord implements IdentityInterface
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
 
+            [['alamat','tempat_lahir','tanggal_lahir'],'string'],
+
             ['avatar','file','skipOnEmpty' => true],
-            [['avatar','alamat','tempat_lahir','tanggal_lahir'],'safe'],
+            [['job','instansi'],'string'],
+            [['avatar','alamat','tempat_lahir','tanggal_lahir','job','instansi'],'safe'],
 
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
