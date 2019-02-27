@@ -40,6 +40,10 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'alamat') ?>
 
+    <?php // echo $form->field($model, 'job') ?>
+
+    <?php // echo $form->field($model, 'instansi') ?>
+
     <?php // echo $form->field($model, 'status') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>

@@ -34,8 +34,6 @@ class m180206_235708_inkubator extends Migration
         $this->execute("DROP TABLE IF EXISTS `tag_berita`;");
 
 
-
-
         /*
          * =============================== ALL TABLES ================================================
          */
@@ -191,7 +189,7 @@ class m180206_235708_inkubator extends Migration
             'id',
             'SET NULL',
             'CASCADE'
-            );
+        );
 
         //foreign key table tag_produk
         //kolom id_produk
@@ -202,14 +200,14 @@ class m180206_235708_inkubator extends Migration
             'id_produk',
             'CASCADE',
             'CASCADE'
-            );
+        );
 
         //kolom id_tag
         $this->addForeignKey('fk-tag_produk-id_tag',
             'tag_produk',
             'id_tag',
             'tag',
-            'id_tag',
+            'id',
             'CASCADE',
             'CASCADE');
 
@@ -229,7 +227,7 @@ class m180206_235708_inkubator extends Migration
             'tag_berita',
             'id_tag',
             'tag',
-            'id_tag',
+            'id',
             'CASCADE',
             'CASCADE');
 

@@ -11,6 +11,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl;
 
 /**
  * BeritaController implements the CRUD actions for Berita model.
@@ -23,6 +24,16 @@ class BeritaController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['create','view','delete' ,'index','update'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -74,12 +85,13 @@ class BeritaController extends Controller
 
         if ($model->load($data)) {
             if ($model->gambar_berita != NULL){
-                $model->gambar_berita->saveAs(Yii::$app->basePath. '/web/images/berita/'. $model->gambar_berita->baseName. '.'. $model->gambar_berita->extension);
+                $model->gambar_berita->saveAs(Yii::getAlias('@webroot'). '/images/berita/'. $model->gambar_berita->baseName. '.'. $model->gambar_berita->extension);
 
             }
             else{
                 $model->gambar_berita = NULL;
             }
+            $model->inti_berita = $_POST['Berita']['inti_berita'];
             $model->penerbit_berita = Yii::$app->user->id;
             $model->save();
             Yii::$app->session->setFlash('success','Berita berhasil dibuat.');
@@ -102,19 +114,19 @@ class BeritaController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
         $gambar_sekarang = $model->gambar_berita;
         $data = Yii::$app->request->post();
 
         if ($model->load($data)) {
             $gambar = UploadedFile::getInstance($model,'gambar_berita');
             if(isset($gambar)){
-                $gambar->saveAs(Yii::$app->basePath. '/web/images/berita/'. $gambar->baseName. '.'. $gambar->extension);
+                $gambar->saveAs(Yii::getAlias('@webroot'). '/images/berita/'. $gambar->baseName. '.'. $gambar->extension);
                 $model->gambar_berita = $gambar->baseName . '.' . $gambar->extension;
             }
             else{
                 $model->gambar_berita = $gambar_sekarang;
             }
+            $model->inti_berita = $_POST['Berita']['inti_berita'];
             $model->save();
             Yii::$app->session->setFlash('success','Berita berhasil diperbarui.');
             return $this->redirect(['view', 'id' => $model->id_berita]);
@@ -154,6 +166,7 @@ class BeritaController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
     public static function actionTagList(){
         return Tag::find()->all();
     }

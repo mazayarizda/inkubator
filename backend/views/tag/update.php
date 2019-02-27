@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Update Tag';
 $this->params['breadcrumbs'][] = ['label' => 'Tags', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id_tag, 'url' => ['view', 'id' => $model->id_tag]];
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 

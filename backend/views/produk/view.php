@@ -33,12 +33,33 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attributes' => [
                         'id_produk',
                         'nama_produk',
+                        'kategoriProduk.nama_kategori',
                         'developer',
-                        'deskripsi_produk:ntext',
-                        'fitur_produk',
-                        'spesifikasi',
+
+                        ['attribute'=>'deskripsi_produk',
+                            'format'=>'raw',
+                            'value'=>function($model){
+                                $a = \yii\helpers\HtmlPurifier::process($model->deskripsi_produk);
+                                return $a;
+                            }],
+                        ['attribute'=>'fitur_produk',
+                            'format'=>'raw',
+                            'value'=>function($model){
+                                $a = \yii\helpers\HtmlPurifier::process($model->fitur_produk);
+                                return $a;
+                            }],
+                        ['attribute'=>'spesifikasi',
+                            'format'=>'raw',
+                            'value'=>function($model){
+                                $a = \yii\helpers\HtmlPurifier::process($model->spesifikasi);
+                                return $a;
+                            }],
                         'harga',
                         'video',
+                        'demo',
+                        'manual_book',
+                        'source_code',
+                        'rancangan',
                         [
                                 'attribute'=>'status',
                             'type'=>'raw',
@@ -66,3 +87,29 @@ $this->params['breadcrumbs'][] = $this->title;
     </div><!-- end col -->
 </div>
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div class="produk-view">
+                <h3 class="m-t-0 m-b-30"><?= Html::encode("Gambar Produk") ?> </h3>
+                <div class="alert alert-primary">
+                </div>
+                <br>
+
+                <div class="container">
+<!--                    <pre>-->
+<!--                    --><?php //print_r($gambar);?>
+<!--                    </pre>-->
+                    <?php
+
+
+                        foreach($gambar as $g){
+                            echo '<img class="center-block" src="/admin/images/produk/'.$g['gambar'].'"  width="75%" height="75%"/>';
+                        }
+                    ?>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div><!-- end col -->
+</div>

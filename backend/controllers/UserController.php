@@ -10,6 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -22,6 +23,16 @@ class UserController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['create','view','delete' ,'index','update'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -67,8 +78,10 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
+        $avatar = Yii::$app->db->createCommand("select * from user where id = $id")->queryAll();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'avatar' => $avatar,
         ]);
     }
 
@@ -84,10 +97,13 @@ class UserController extends Controller
         if ($model->load($data)) {
             $model->setPassword($model->password_hash);
             $model->generateAuthKey();
-            $model->avatar = UploadedFile::getInstance($model,'avatar');
-            if ($model->avatar != null){
-                $model->avatar->saveAs(Yii::$app->basePath. '/web/images/avatar/'. $model->avatar->baseName. '.'. $model->avatar->extension);
+            $dataGambar = UploadedFile::getInstance($model,'avatar');
+            if ($dataGambar != null){
+            	$model->avatar = $dataGambar->getBaseName().'.'.$dataGambar->getExtension();
+                $dataGambar->saveAs(Yii::getAlias('@webroot'). '/images/avatar/'.$dataGambar->getBaseName(). '.'. $dataGambar->getExtension());
             }
+            $model->job = $_POST['User']['job'];
+            $model->instansi = $_POST['User']['instansi'];
             if($model->save(false)){
                 Yii::$app->session->setFlash('success','Pengguna berhasil ditambahkan.');
                 return $this->redirect('index');
@@ -113,16 +129,24 @@ class UserController extends Controller
         $model = $this->findModel($id);
         $data = Yii::$app->request->post();
         $gambar_sekarang = $model->avatar;
+        $currentPassword = $model->password_hash;
         if ($model->load($data)) {
+        	$dataPass = Yii::$app->request->post('User')['password_hash'];
             $gambar = UploadedFile::getInstance($model,'avatar');
             if(isset($gambar)){
-                $gambar->saveAs(Yii::$app->basePath. '/web/images/avatar/'. $gambar->baseName. '.'. $gambar->extension);
+                $gambar->saveAs(Yii::getAlias('@webroot'). '/images/avatar/'. $gambar->baseName. '.'. $gambar->extension);
                 $model->avatar = $gambar->baseName . '.' . $gambar->extension;
             }
             else{
                 $model->avatar = $gambar_sekarang;
             }
-            $model->setPassword($model->password_hash);
+            $model->job = $_POST['User']['job'];
+            $model->instansi = $_POST['User']['instansi'];
+            if($currentPassword != $dataPass){
+            	$model->password_hash = Yii::$app->security->generatePasswordHash($dataPass);
+            }else{
+            	$model->password_hash = $currentPassword;
+            }
             if ($model->save(false)){
                 Yii::$app->session->setFlash('success','Pengguna berhasil diperbarui.');
                 return $this->redirect(['view', 'id' => $model->id]);

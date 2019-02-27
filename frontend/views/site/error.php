@@ -6,22 +6,17 @@
 /* @var $exception Exception */
 
 use yii\helpers\Html;
-
+$this->context->layout = '404';
 $this->title = $name;
 ?>
 <div class="site-error">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
-    </div>
-
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
+    <div class="col-md-7 col-sm-6 col-xs-12">
+        <h3> <?= nl2br(Html::encode($message)) ?></h3>
+        <?= Html::a('Kembali',Yii::$app->getHomeUrl(),['class'=>'error-btn'])?>
+    </div><!-- /.col-md-7 -->
+    <div class="col-md-5 col-sm-6 col-xs-12">
+        <?=Html::img(Yii::getAlias('@web/img/404-man.png'),['alt'=>'Gambar 404'])?>
+    </div><!-- /.col-md-5 -->
 
 </div>

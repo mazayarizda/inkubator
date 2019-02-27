@@ -41,7 +41,7 @@ class AppAsset extends AssetBundle
         'js/wow.min.js',
         'plugins/jquery-knob/jquery.knob.js',
         'plugins/jquery-ui/jquery-ui.js',
-        'plugins/raphael/raphael.min.js',
+        'plugins/raphael/raphael-min.js',
         'plugins/moment/moment.js',
         'js/jquery.app.js',
         'js/jquery.core.js',

@@ -18,9 +18,13 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'nama')->textInput() ?>
+
     <?= $form->field($model, 'username')->textInput() ?>
-    <?= $form->field($model, 'password_hash')->passwordInput(['value' => ''])->label('Password') ?>
+
+    <?= $form->field($model, 'password_hash')->passwordInput()->label('Password') ?>
+
     <?= $form->field($model, 'email')->textInput() ?>
+
     <?= $form->field($model, 'tempat_lahir')->textInput() ?>
     <?= $form->field($model, 'tanggal_lahir')->widget(\kartik\date\DatePicker::className(),[
             'convertFormat' => true,
@@ -30,10 +34,15 @@ use yii\widgets\ActiveForm;
         ]]) ?>
     <?= $form->field($model, 'alamat')->textarea(['cols'=>6]) ?>
 
+    <?= $form->field($model, 'job')->textInput() ?>
+
+    <?= $form->field($model, 'instansi')->textInput() ?>
+
+
     <?= $form->field($model, 'avatar')->widget(FileInput::className(),[
         'options'=>['accept'=>'image/*','multiple'=>false],
         'pluginOptions' => [
-            'initialPreview'=> isset($model->avatar)? '/inkubator/backend/web/images/avatar/'.$model->avatar: false,
+            'initialPreview'=> isset($model->avatar)? Yii::$app->urlManager->getBaseUrl().'images/avatar/'.$model->avatar: false,
             'initialPreviewAsData'=>true,
             'initialCaption'=>$model->avatar,
             'initialPreviewConfig' => [
