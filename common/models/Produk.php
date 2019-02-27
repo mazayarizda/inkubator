@@ -3,7 +3,7 @@
 namespace common\models;
 
 use backend\models\Admin;
-use backend\models\Kategori;
+use common\models\Kategori;
 use Yii;
 
 /**

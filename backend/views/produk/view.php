@@ -101,12 +101,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <!--                    --><?php //print_r($gambar);?>
 <!--                    </pre>-->
                     <?php
-
-
-                        foreach($gambar as $g){
-                            echo '<img class="center-block" src="/admin/images/produk/'.$g['gambar'].'"  width="75%" height="75%"/>';
-                        }
+                        foreach($gambar as $g):
                     ?>
+                    <?=Html::img(Yii::getAlias('@imgBackend/produk/'.$g['gambar']),['width'=>'75%','height'=>'75%','alt'=>'Gambar Produk'])?>
+
+                    <?php endforeach;?>
                 </div>
                 <div class="clearfix"></div>
             </div>
