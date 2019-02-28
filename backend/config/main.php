@@ -50,6 +50,17 @@ return [
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
         ],
+        'formatter' => [
+
+            'datetimeFormat' => 'php:l, d F Y @ H:i',
+
+            'decimalSeparator' => ',',
+
+            'thousandSeparator' => '.',
+
+            'currencyCode' => 'Rp',
+
+        ],
     ],
     'params' => $params,
 ];
