@@ -7,52 +7,52 @@
  */
 use common\models\Berita;
 use yii\helpers\Html;
+use yii\widgets\Breadcrumbs;
+
+
+$this->title = 'Berita';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="page-head_agile_info_w3l">
-    <div class="container">
-        <h3>Berita</h3>
-        <!--/w3_short-->
-        <div class="services-breadcrumb">
-            <div class="agile_inner_breadcrumb">
-                <ul class="w3_short">
-                    <li><a href="<?php echo Yii::$app->getHomeUrl();?>site/index">Home</a><i>|</i></li>
-                    <li>Berita</li>
-                </ul>
-            </div>
-        </div>
-        <!--//w3_short-->
-    </div>
-</div>
+<div class="inner-banner">
+    <div class="thm-container">
+        <?=
+        Breadcrumbs::widget(
+            [
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                'class'=>'breadcumb'
+            ]
+        ) ?>
 
-<div class="banner-bootom-w3-agileits">
-    <div class="container">
+        <h3><?=$this->title?></h3>
+    </div><!-- /.thm-container -->
+</div><!-- /.inner-banner -->
 
+<section class="blog-style-one">
+    <div class="thm-container">
         <div class="row">
-            <?php
-           $model = Berita::find()->orderBy('created_at DESC')->all();
-            foreach($model as $db):
-                ?>
 
-                <div class="col-md-4 bb-grids bb-middle-agileits-w3layouts" style="margin-top: 25px">
-                    <a href="<?=\yii\helpers\Url::toRoute(['site/berita','id'=>$db->id_berita])?>">
-                        <div class="bb-left-agileits-w3layouts-inner grid">
-                            <figure class="effect-roxy">
-                                <?= Html::img(Yii::$app->urlManager->getBaseUrl().'/admin/images/berita/'.$db['gambar_berita'],['width' => '660px','height'=>'210px']); ?>
+            <?php foreach ($model as $berita):?>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="single-blog-style-one">
+                    <div class="img-box">
+                        <?= Html::img(Yii::getAlias('@imgBackend/berita/'.$berita->gambar_berita),['alt'=>'Gambar Berita','height'=>244, 'width'=>370])?>
+                       <?=Html::a('+',\yii\helpers\Url::to(['site/berita','id'=>$berita->id_berita]),['class'=>'read-more'])?>
+                        <div class="date-box">
+                            <?=Html::encode(''
+                            )?>
+                        </div><!-- /.date-box -->
+                    </div><!-- /.img-box -->
+                    <div class="text-box">
+                        <?=Html::a('<h3>'.$berita->judul_berita.'</h3>',\yii\helpers\Url::to(['site/berita','id'=>$berita->id_berita]))?>
+                        <p><?=$berita->inti_berita?></p>
+                    </div><!-- /.text-box -->
+                </div><!-- /.single-blog-style-one -->
+            </div><!-- /.col-md-4 -->
+            <?php endforeach;?>
+        </div><!-- /.row -->
+    </div><!-- /.thm-container -->
+</section><!-- /.blog-style-one -->
 
-                                <figcaption>
-                                    <h4 style="color: white"><span></span><?php echo $db->judul_berita?></h4>
-                                    <p><?php echo $db->inti_berita?></p>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </a>
-                </div>
-            <?php endforeach; ?>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-
-</div>
 
 

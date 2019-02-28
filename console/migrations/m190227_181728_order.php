@@ -21,7 +21,7 @@ class m190227_181728_order extends Migration
             [
                 'id_order'=> $this->primaryKey(11),
                 'id_user'=> $this->integer(11)->null()->defaultValue(null),
-                'date_order'=> $this->datetime()->notNull(),
+                'date_order'=> $this->integer(),
                 'total'=> $this->string(255)->notNull(),
                 'status'=> "enum('true', 'false') NOT NULL",
             ],$tableOptions

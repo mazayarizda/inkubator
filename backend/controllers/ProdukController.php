@@ -90,10 +90,6 @@ class ProdukController extends Controller
             $produk->added_by = Yii::$app->user->getId();
             $produk->status = 10;
 
-            date_default_timezone_set('Asia/Jakarta');
-            $produk->created_at = date('Y-m-d h:i:s');
-            $produk->updated_at = date('Y-m-d h:i:s');
-
             $produk->source_code = UploadedFile::getInstance($produk,'source_code');
             if($produk->source_code!=null){
             	$produk->source_code->saveAs(Yii::getAlias('@webroot'). '/upload/source_code/'. $produk->source_code->baseName. '.'. $produk->source_code->extension);
@@ -178,9 +174,6 @@ class ProdukController extends Controller
         $currentRancangan = $produk->rancangan;
 
         if ($produk->load($data)) {
-
-            date_default_timezone_set('Asia/Jakarta');
-            $produk->updated_at = date('Y-m-d H:i:s');
 
 
             $dataSourceCode = UploadedFile::getInstance($produk,'source_code');

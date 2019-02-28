@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nama_lengkap',
             'jabatan',
             'foto',
-            'created_at',
+            'created_at:datetime',
             //'updated_at',
 
                                 ['class' => 'yii\grid\ActionColumn','header'=>'Aksi'],

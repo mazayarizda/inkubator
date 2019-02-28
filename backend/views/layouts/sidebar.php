@@ -58,7 +58,6 @@ $controllerName = substr($route,0,strpos($route,'/'));
                         ['label'=>'Training', 'icon'=>'zmdi-code-setting','url'=>['/training'],'template'=>$controllerName == 'training'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Team', 'icon'=>'zmdi-account-circle','url'=>['/team'],'template'=>$controllerName == 'team'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Pengguna', 'icon'=>'zmdi-accounts','url'=>['/user'],'template'=>$controllerName == 'user'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
-                        ['label'=>'Carousel', 'icon'=>'zmdi-landscape','url'=>['/carousel'],'template'=>$controllerName == 'carousel'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Profil', 'icon'=>'zmdi-file','url'=>['/profil'],'template'=>$controllerName == 'profil'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
 
                     ]

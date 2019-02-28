@@ -13,6 +13,8 @@ use yii\db\Expression;
  *
  * @property int $id
  * @property string $nama_tag
+ * @property int $count
+
  * @property string $created_at
  * @property string $updated_at
  *
@@ -21,6 +23,8 @@ use yii\db\Expression;
  */
 class Tag extends \yii\db\ActiveRecord
 {
+
+
     /**
      * @inheritdoc
      */
@@ -32,17 +36,9 @@ class Tag extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-                'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
-                    ActiveRecord::EVENT_BEFORE_UPDATE => 'updated_at',
-                ],
-                'value' => function($event) {
 
-                    return new Expression('NOW()');
-                }
-            ],
+                TimestampBehavior::className(),
+
             'tag'=>[
                 'class' => TagBehavior::className(),
                 'junctionTable' => ['tag_berita'],
@@ -59,7 +55,7 @@ class Tag extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'updated_at'], 'safe'],
+            [['count','created_at', 'updated_at'], 'safe'],
             [['nama_tag'], 'string', 'max' => 255],
         ];
     }

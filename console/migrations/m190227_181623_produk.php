@@ -34,8 +34,8 @@ class m190227_181623_produk extends Migration
                 'rancangan'=> $this->string(255)->null()->defaultValue(null),
                 'status'=> $this->smallInteger(6)->notNull()->defaultValue(10),
                 'added_by'=> $this->integer(11)->null()->defaultValue(null),
-                'created_at'=> $this->datetime()->null()->defaultValue(null),
-                'updated_at'=> $this->datetime()->null()->defaultValue(null),
+                'created_at'=> $this->integer(),
+                'updated_at'=> $this->integer(),
             ],$tableOptions
         );
         $this->createIndex('idx-produk','{{%produk}}',['nama_produk','developer','harga'],false);

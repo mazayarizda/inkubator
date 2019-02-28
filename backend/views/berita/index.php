@@ -43,30 +43,11 @@ if(Yii::$app->session->hasFlash('success'))
                         //'isi_berita:ntext',
                         [
                             'attribute'=>'gambar_berita',
-                            'format'=>'raw',
-                            'value'=> function($model) {
-                                $modal = '
-                                    <button class="btn btn-default waves-effect waves-light" data-toggle="modal" data-target="#photo-' . $model->id_berita . '"><img src="/admin/images/berita/' . $model->gambar_berita . '" width="30px" height="30px"></button>
-                                    
-                                    <div id="photo-' . $model->id_berita . '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="#modal-' . $model->id_berita . '" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    <h4 class="modal-title" id="modal-' . $model->id_berita . '">' . $model->judul_berita . '</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                   <img class="center-block" src="/admin/images/berita/' . $model->gambar_berita . '"  width="75%" height="75%"/>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div><!— /.modal-content —>
-                                        </div><!— /.modal-dialog —>
-                                    </div><!— /.modal —>
-                                ';
-                                return $modal;
+                            'format'=>['image',['height'=>50, 'width'=>'50']],
+                            'value'=> function($model){
+                    return Yii::getAlias('@imgBackend/berita/'.$model->gambar_berita);
                             }
+
                         ],
                         //'penerbit_berita',
                         'created_at:datetime',

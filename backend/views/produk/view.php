@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Produk */
 
-$this->title = $model->id_produk;
+$this->title = $model->nama_produk;
 $this->params['breadcrumbs'][] = ['label' => 'Produk', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -69,12 +69,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             }
                         ],
                         [
-                            'attribute'=>'added_by',
-                            'type'=>'raw',
-                            'value'=>function($model){
-                                $nama = Yii::$app->db->createCommand('Select username from admin where id = '.$model->added_by)->queryAll();
-                                return $nama[0]['username'];
-                            }
+                                'attribute'=>'added_by',
+                            'label'=>'Ditambahkan oleh',
+                                'value'=>                      $model->addedBy->nama,
+
                         ],
                         'created_at:datetime',
                         'updated_at:datetime',
@@ -101,12 +99,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <!--                    --><?php //print_r($gambar);?>
 <!--                    </pre>-->
                     <?php
-
-
-                        foreach($gambar as $g){
-                            echo '<img class="center-block" src="/admin/images/produk/'.$g['gambar'].'"  width="75%" height="75%"/>';
-                        }
+                        foreach($gambar as $g):
                     ?>
+                    <?=Html::img(Yii::getAlias('@imgBackend/produk/'.$g['gambar']),['width'=>'75%','height'=>'75%','alt'=>'Gambar Produk'])?>
+
+                    <?php endforeach;?>
                 </div>
                 <div class="clearfix"></div>
             </div>

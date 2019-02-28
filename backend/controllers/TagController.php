@@ -133,6 +133,8 @@ class TagController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        Yii::$app->session->setFlash('success',"Tag berhasil dihapus.");
+
 
         return $this->redirect(['index']);
     }
