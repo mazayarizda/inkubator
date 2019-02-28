@@ -34,29 +34,9 @@ if(Yii::$app->session->hasFlash('success'))
                         'id_profil',
                         [
                             'attribute'=>'foto_profil',
-                            'format'=>'raw',
+                            'format'=>['image',['height'=>80,'width'=>80]],
                             'value'=> function($model) {
-                                $modal = '
-                                    <button class="btn btn-default waves-effect waves-light" data-toggle="modal" data-target="#photo-' . $model->id_profil . '"><img src="/admin/images/profil/' . $model->foto_profil . '" width="30px" height="30px"></button>
-                                    
-                                    <div id="photo-' . $model->id_profil . '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="#modal-' . $model->id_profil . '" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                  
-                                                </div>
-                                                <div class="modal-body">
-                                                   <img class="center-block" src="/admin/images/profil/' . $model->foto_profil . '"  width="75%" height="75%"/>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div><!— /.modal-content —>
-                                        </div><!— /.modal-dialog —>
-                                    </div><!— /.modal —>
-                                ';
-                                return $modal;
+                                return Yii::getAlias('@imgBackend/profil/'.$model->foto_profil);
                             }
                         ],
                         [

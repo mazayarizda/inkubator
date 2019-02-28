@@ -26,7 +26,7 @@ class TagController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['create','view','delete' ,'index','update'],
+                        'actions' => ['create','view','delete' ,'index','update','suggest'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

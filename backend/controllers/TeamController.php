@@ -78,6 +78,8 @@ class TeamController extends Controller
             }
 
             $model->save();
+            Yii::$app->session->setFlash('success',"Anggota tim berhasil ditambahkan.");
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -110,6 +112,8 @@ class TeamController extends Controller
                 $model->foto = $oldPhoto;
             }
             $model->save();
+            Yii::$app->session->setFlash('success',"Anggota tim berhasil diperbarui.");
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -128,6 +132,8 @@ class TeamController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        Yii::$app->session->setFlash('success',"Anggota tim berhasil dihapus.");
+
 
         return $this->redirect(['index']);
     }
