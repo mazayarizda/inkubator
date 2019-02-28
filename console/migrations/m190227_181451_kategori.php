@@ -21,8 +21,8 @@ class m190227_181451_kategori extends Migration
             [
                 'id_kategori'=> $this->primaryKey(11),
                 'nama_kategori'=> $this->string(255)->notNull(),
-                'created_at'=> $this->datetime()->notNull(),
-                'updated_at'=> $this->datetime()->notNull(),
+                'created_at'=>$this->integer(),
+                'updated_at'=> $this->integer()
             ],$tableOptions
         );
 

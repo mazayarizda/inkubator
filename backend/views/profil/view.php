@@ -52,7 +52,7 @@ if(Yii::$app->session->hasFlash('success'))
                         'email',
                         'hp',
                         'created_at:datetime',
-                        'update_at:datetime',
+                        'updated_at:datetime',
                     ],
                 ]) ?>
             </div>

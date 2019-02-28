@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m190227_181812_adminDataInsert extends Migration
+class m190228_151314_adminDataInsert extends Migration
 {
 
     public function init()
@@ -30,8 +30,8 @@ class m190227_181812_adminDataInsert extends Migration
         'tanggal_lahir' => '2018-04-19',
         'alamat' => 'Pekanbaru',
         'status' => '10',
-        'created_at' => '2018-02-08 09:48:14',
-        'updated_at' => '2018-06-09 07:34:51',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
 ]
         );

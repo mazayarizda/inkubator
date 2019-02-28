@@ -130,7 +130,10 @@ class SiteController extends Controller
 
     public function actionSemuaBerita()
     {
-        return $this->render('allberita');
+        $model = Berita::find()->orderBy('created_at DESC')->all();
+        return $this->render('allberita',[
+            'model'=>$model
+        ]);
     }
 
     public function actionHowTo()

@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m190227_182109_userDataInsert extends Migration
+class m190228_151649_userDataInsert extends Migration
 {
 
     public function init()
@@ -32,8 +32,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'Mahasiswa',
         'instansi' => 'UIN SUSKA RIAU',
         'status' => '10',
-        'created_at' => '2018-05-22 17:24:29',
-        'updated_at' => '2018-05-22 22:17:56',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '23',
@@ -50,8 +50,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'Co-Founder',
         'instansi' => 'TopApp',
         'status' => '10',
-        'created_at' => '2018-05-22 22:17:39',
-        'updated_at' => '2018-05-22 22:17:39',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '24',
@@ -68,8 +68,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'konsultant',
         'instansi' => 'uin',
         'status' => '10',
-        'created_at' => '2018-05-24 09:25:58',
-        'updated_at' => '2018-05-24 09:25:58',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '26',
@@ -86,8 +86,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'sabil',
         'instansi' => 'sabil',
         'status' => '10',
-        'created_at' => '2018-06-03 01:43:59',
-        'updated_at' => '2018-06-03 01:43:59',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '27',
@@ -104,8 +104,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'Kuliah',
         'instansi' => '03021996',
         'status' => '10',
-        'created_at' => '2018-06-07 08:06:17',
-        'updated_at' => '2018-06-07 08:06:17',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '28',
@@ -122,8 +122,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'sekretaris',
         'instansi' => 'spr ponbaja',
         'status' => '10',
-        'created_at' => '2018-06-27 16:51:18',
-        'updated_at' => '2018-06-27 16:51:18',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '29',
@@ -140,8 +140,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'Mahasiswa',
         'instansi' => 'Inkubator jurusan teknik informatika',
         'status' => '10',
-        'created_at' => '2018-07-06 16:53:12',
-        'updated_at' => '2018-07-06 16:53:12',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '30',
@@ -158,8 +158,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'it consultant',
         'instansi' => 'tanjungpinang',
         'status' => '10',
-        'created_at' => '2018-09-08 16:46:33',
-        'updated_at' => '2018-09-08 16:46:33',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '31',
@@ -176,8 +176,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'Mahasiswa',
         'instansi' => 'UIN SUSKA RIAU',
         'status' => '10',
-        'created_at' => '2018-09-18 09:12:50',
-        'updated_at' => '2018-09-18 09:12:50',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '32',
@@ -194,8 +194,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'Mahasiswa',
         'instansi' => 'UIN SUSKA RIAU',
         'status' => '10',
-        'created_at' => '2018-09-23 15:28:40',
-        'updated_at' => '2018-09-23 15:28:40',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '33',
@@ -212,8 +212,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'Mahasiswa',
         'instansi' => 'UIN SUSKA RIAU',
         'status' => '10',
-        'created_at' => '2018-09-27 12:08:48',
-        'updated_at' => '2018-09-27 12:08:48',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '34',
@@ -230,8 +230,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'MAHASISWA',
         'instansi' => 'UIN SUSKA RIAU',
         'status' => '10',
-        'created_at' => '2018-10-17 14:06:49',
-        'updated_at' => '2018-10-17 14:06:49',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '35',
@@ -248,8 +248,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'ob',
         'instansi' => 'mail',
         'status' => '10',
-        'created_at' => '2018-10-18 09:42:25',
-        'updated_at' => '2018-10-18 09:42:25',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '36',
@@ -266,8 +266,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'mahasiswa',
         'instansi' => 'uin suska riau',
         'status' => '10',
-        'created_at' => '2018-10-18 13:38:51',
-        'updated_at' => '2018-10-18 13:38:51',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '37',
@@ -284,8 +284,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'mahasiswa',
         'instansi' => 'uin suska riau',
         'status' => '10',
-        'created_at' => '2018-10-28 11:11:21',
-        'updated_at' => '2018-10-28 11:11:21',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '38',
@@ -302,8 +302,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'Mahasiswa',
         'instansi' => 'Uin Suska RIau',
         'status' => '10',
-        'created_at' => '2018-11-14 01:36:46',
-        'updated_at' => '2018-11-14 01:36:46',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '39',
@@ -320,8 +320,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'mahasiswa',
         'instansi' => 'uin suska riau',
         'status' => '10',
-        'created_at' => '2019-01-17 09:28:57',
-        'updated_at' => '2019-01-17 09:28:57',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '40',
@@ -338,8 +338,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'Mahasiswa',
         'instansi' => 'Kampus',
         'status' => '10',
-        'created_at' => '2019-01-22 15:56:36',
-        'updated_at' => '2019-01-22 15:56:36',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '41',
@@ -356,8 +356,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'Mahasiswa',
         'instansi' => 'Gunadarma',
         'status' => '10',
-        'created_at' => '2019-02-07 11:20:58',
-        'updated_at' => '2019-02-07 11:20:58',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '42',
@@ -374,8 +374,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'Mahasiswa',
         'instansi' => 'UIN SUSKA RIAU',
         'status' => '10',
-        'created_at' => '2019-02-11 18:33:55',
-        'updated_at' => '2019-02-11 18:33:55',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id' => '43',
@@ -392,8 +392,8 @@ class m190227_182109_userDataInsert extends Migration
         'job' => 'Student',
         'instansi' => 'Student',
         'status' => '10',
-        'created_at' => '2019-02-13 08:28:43',
-        'updated_at' => '2019-02-13 08:28:43',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
 ]
         );

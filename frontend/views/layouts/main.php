@@ -61,7 +61,7 @@ use yii\helpers\Html; ?>
 
 <?= $this->render('header') ?>
 
-<?= $this->render('content-main',['content'=>$content]) ?>
+<?=$content?>
 
 <?= $this->render('footer')?>
 

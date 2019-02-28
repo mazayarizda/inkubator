@@ -19,7 +19,7 @@ class ProfilSearch extends Profil
     {
         return [
             [['id_profil'], 'integer'],
-            [['foto_profil', 'isi_profil', 'nama_app', 'alamat', 'email', 'hp', 'created_at', 'update_at'], 'safe'],
+            [['foto_profil', 'isi_profil', 'nama_app', 'alamat', 'email', 'hp', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -61,7 +61,7 @@ class ProfilSearch extends Profil
         $query->andFilterWhere([
             'id_profil' => $this->id_profil,
             'created_at' => $this->created_at,
-            'update_at' => $this->update_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'foto_profil', $this->foto_profil])

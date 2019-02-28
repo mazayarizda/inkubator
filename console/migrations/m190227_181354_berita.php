@@ -25,8 +25,8 @@ class m190227_181354_berita extends Migration
                 'isi_berita'=> $this->text()->null()->defaultValue(null),
                 'gambar_berita'=> $this->string(255)->null()->defaultValue(null),
                 'penerbit_berita'=> $this->integer(11)->null()->defaultValue(null),
-                'created_at'=> $this->datetime()->null()->defaultValue(null),
-                'updated_at'=> $this->datetime()->null()->defaultValue(null),
+                'created_at'=>$this->integer(),
+                'updated_at'=> $this->integer(),
             ],$tableOptions
         );
         $this->createIndex('idx-berita','{{%berita}}',['judul_berita','penerbit_berita'],false);

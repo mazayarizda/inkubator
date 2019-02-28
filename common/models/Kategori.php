@@ -4,6 +4,7 @@ namespace common\models;
 
 use common\models\Produk;
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "kategori".
@@ -17,6 +18,14 @@ use Yii;
  */
 class Kategori extends \yii\db\ActiveRecord
 {
+    public function behaviors()
+    {
+        return
+            [
+                TimestampBehavior::className(),
+
+            ];
+    }
     /**
      * @inheritdoc
      */

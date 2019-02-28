@@ -21,9 +21,9 @@ class m190227_181509_tag extends Migration
             [
                 'id'=> $this->primaryKey(11),
                 'nama_tag'=> $this->string(255)->null()->defaultValue(null),
-                'count'=> $this->integer(11)->null()->defaultValue(null),
-                'created_at'=> $this->datetime()->null()->defaultValue(null),
-                'updated_at'=> $this->datetime()->null()->defaultValue(null),
+                'count'=> $this->integer(11)->defaultValue(0),
+                'created_at'=> $this->integer(),
+                'updated_at'=> $this->integer(),
             ],$tableOptions
         );
 

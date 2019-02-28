@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m190227_182433_beritaDataInsert extends Migration
+class m190228_151356_beritaDataInsert extends Migration
 {
 
     public function init()
@@ -30,8 +30,8 @@ class m190227_182433_beritaDataInsert extends Migration
 <p>Ubuntu&rsquo;s switch to GNOME Shell desktop could, in theory, make spotting its use &ldquo;in the wild&rdquo;, particularly in TV shows and movies like this, a little more difficult.</p>',
         'gambar_berita' => 'ubuntu-in-the-wild-in-maze-runner-film.jpg',
         'penerbit_berita' => '1',
-        'created_at' => '2018-04-16 16:36:08',
-        'updated_at' => '2018-04-16 16:43:06',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id_berita' => '8',
@@ -49,8 +49,8 @@ class m190227_182433_beritaDataInsert extends Migration
 <p style="text-align: justify;">Beberapa di antaranya adalah fitur multi-kamera yang mendukung aplikasi, dukungan &ldquo;notch&rdquo; mirip iPhone X, Gmail Smart Replies, tampilan gambar di notifikasi, pemisahan percakapan grup dan personal yang lebih jelas, zooming-text seperti di iPhone, melihat peta indoor melalui aplikasi, kompresi foto, peningkatan password otomatis, hingga garis volume vertikal.<br /><br /></p>',
         'gambar_berita' => '3951286817.jpg',
         'penerbit_berita' => '1',
-        'created_at' => '2018-04-16 17:05:14',
-        'updated_at' => '2018-04-16 17:05:14',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id_berita' => '9',
@@ -61,8 +61,8 @@ class m190227_182433_beritaDataInsert extends Migration
 <p style="text-align: justify;">Dari Rp 123 miliar biaya pengamanan Mark Zuckerberg, sebanyak 7,3 juta dollar AS (Rp 100 miliar) sendiri untuk bodyguard, pengamanan perjalanan, serta pengamanan di rumah. Pengamanan perjalanan meliputi penerbangan pribadi Mark Zuckerberg ke berbagai tempat, mulai untuk bahan bakar pesawat, konsumsi, hingga fee lainnya, sebagaimana dihimpun KompasTekno, Senin (16/4/2018), dari Gizmodo. Chief Operating Officer (COO) Facebook, Sheryl Sandberg juga diberi anggaran pengamanan. Hanya saja, nominalnya tak sebesar Mark Zuckerberg, yakni &ldquo;hanya&rdquo; 2,3 juta dollar AS (RP 31 miliar). Biaya pengamanan Mark Zuckerberg bisa dibilang sangat tinggi. Sebagai perbandingan, CEO Apple, Tim Cook cuma punya anggaran keamanan sebesar 317.000 dollar AS atau Rp 4,3 miliar.</p>',
         'gambar_berita' => '2723165131.jpg',
         'penerbit_berita' => '1',
-        'created_at' => '2018-04-16 23:03:17',
-        'updated_at' => '2018-04-16 23:03:17',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id_berita' => '10',
@@ -75,8 +75,8 @@ class m190227_182433_beritaDataInsert extends Migration
 <p>Karena ditengarai ada beberapa aplikasi juga (yang terlibat), apakah itu sudah dilakukan investigasi atau belum," ungkap Samuel "Jangan berandai-andai, kita lihat saja dulu," tambahnya. Pemerintah memang bisa saja mengambil tindakan tegas memblokir Facebook lantaran data satu juta pengguna Indonesia ikut bocor dalam skandal Cambridge Analytica (CA). Bahkan beberapa kali, Menkominfo Rudiantara pun berkata Kementerian Kominfo tak segan melakukan pemblokiran<br /><br /></p>',
         'gambar_berita' => 'berita.jpg',
         'penerbit_berita' => '1',
-        'created_at' => '2018-04-25 01:30:47',
-        'updated_at' => '2018-04-25 01:34:21',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id_berita' => '11',
@@ -122,8 +122,8 @@ class m190227_182433_beritaDataInsert extends Migration
 <p><em><a href="https://azure.microsoft.com/en-us/blog/introducing-microsoft-azure-sphere-secure-and-power-the-intelligent-edge/" target="_blank" rel="noopener">Microsoft</a>&nbsp;(via&nbsp;<a href="http://uk.businessinsider.com/microsoft-azure-sphere-is-powered-by-linux-2018-4" target="_blank" rel="noopener">Business Insider</a>&nbsp;&amp;&nbsp;<a href="https://www.thurrott.com/internet-of-things-iot/156628/microsofts-next-os-based-linux-not-windows" target="_blank" rel="noopener">Thurrot</a>)</em></p>',
         'gambar_berita' => 'microsoft-loves-linux-1-750x422.jpg',
         'penerbit_berita' => '1',
-        'created_at' => '2018-04-25 01:36:35',
-        'updated_at' => '2018-04-25 01:36:35',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id_berita' => '13',
@@ -162,8 +162,8 @@ class m190227_182433_beritaDataInsert extends Migration
 <p>wassalam</p>',
         'gambar_berita' => 'berita1.jpg',
         'penerbit_berita' => '1',
-        'created_at' => '2018-04-25 23:26:54',
-        'updated_at' => '2018-04-26 12:37:45',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id_berita' => '14',
@@ -176,8 +176,8 @@ class m190227_182433_beritaDataInsert extends Migration
 <p>&nbsp;</p>',
         'gambar_berita' => 'smartabsen.jpg',
         'penerbit_berita' => '1',
-        'created_at' => '2018-07-16 09:56:59',
-        'updated_at' => '2018-07-16 10:01:18',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
 ]
         );

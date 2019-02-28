@@ -5,6 +5,7 @@ namespace common\models;
 use backend\models\Admin;
 use common\models\Kategori;
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "produk".
@@ -36,6 +37,15 @@ class Produk extends \yii\db\ActiveRecord
 {
 	const STATUS_DELETED = 0;
 	const STATUS_ACTIVE = 10;
+
+    public function behaviors()
+    {
+        return
+            [
+                TimestampBehavior::className(),
+
+            ];
+    }
     /**
      * @inheritdoc
      */

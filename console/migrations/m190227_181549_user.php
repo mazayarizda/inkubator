@@ -33,8 +33,8 @@ class m190227_181549_user extends Migration
                 'job'=> $this->string(64)->null()->defaultValue(null),
                 'instansi'=> $this->string(255)->null()->defaultValue(null),
                 'status'=> $this->smallInteger(6)->notNull()->defaultValue(10),
-                'created_at'=> $this->datetime()->null()->defaultValue(null),
-                'updated_at'=> $this->datetime()->null()->defaultValue(null),
+                'created_at'=> $this->integer(),
+                'updated_at'=> $this->integer(),
             ],$tableOptions
         );
         $this->createIndex('username','{{%user}}',['username'],true);

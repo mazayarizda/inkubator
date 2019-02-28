@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m190227_182530_produkDataInsert extends Migration
+class m190228_151417_produkDataInsert extends Migration
 {
 
     public function init()
@@ -33,8 +33,8 @@ class m190227_182530_produkDataInsert extends Migration
         'rancangan' => 'RANCANGAN APLIKASI.pdf',
         'status' => '10',
         'added_by' => '1',
-        'created_at' => '2018-03-26 12:29:06',
-        'updated_at' => '2018-06-07 18:11:02',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id_produk' => '2',
@@ -67,8 +67,8 @@ class m190227_182530_produkDataInsert extends Migration
         'rancangan' => 'RANCANGAN APLIKASI.pdf',
         'status' => '10',
         'added_by' => '1',
-        'created_at' => '2018-04-25 11:16:09',
-        'updated_at' => '2018-06-08 14:24:16',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id_produk' => '3',
@@ -100,8 +100,8 @@ class m190227_182530_produkDataInsert extends Migration
         'rancangan' => 'RANCANGAN APLIKASI.pdf',
         'status' => '10',
         'added_by' => '1',
-        'created_at' => '2018-04-26 02:01:27',
-        'updated_at' => '2018-06-21 09:47:06',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id_produk' => '4',
@@ -143,8 +143,8 @@ class m190227_182530_produkDataInsert extends Migration
         'rancangan' => 'Rancangan_realcountfix.pdf',
         'status' => '10',
         'added_by' => '1',
-        'created_at' => '2018-06-04 08:51:55',
-        'updated_at' => '2018-08-20 08:12:17',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id_produk' => '5',
@@ -176,8 +176,8 @@ class m190227_182530_produkDataInsert extends Migration
         'rancangan' => 'Rancangan_Sibcad.pdf',
         'status' => '10',
         'added_by' => '1',
-        'created_at' => '2018-06-04 09:09:54',
-        'updated_at' => '2018-06-11 19:25:26',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id_produk' => '37',
@@ -204,8 +204,8 @@ class m190227_182530_produkDataInsert extends Migration
         'rancangan' => 'Rancangan_ekin.pdf',
         'status' => '10',
         'added_by' => '1',
-        'created_at' => '2018-06-06 01:07:22',
-        'updated_at' => '2018-06-09 08:35:42',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
     [
         'id_produk' => '38',
@@ -249,8 +249,8 @@ class m190227_182530_produkDataInsert extends Migration
         'rancangan' => 'Rancangan_apk.pdf',
         'status' => '10',
         'added_by' => '1',
-        'created_at' => '2018-06-06 01:10:53',
-        'updated_at' => '2018-07-06 16:42:01',
+        'created_at' => '1551364390',
+        'updated_at' => '1551364390',
     ],
 ]
         );

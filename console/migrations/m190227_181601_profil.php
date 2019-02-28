@@ -26,8 +26,8 @@ class m190227_181601_profil extends Migration
                 'alamat'=> $this->text()->notNull(),
                 'email'=> $this->string(255)->notNull(),
                 'hp'=> $this->string(15)->notNull(),
-                'created_at'=> $this->datetime()->null()->defaultValue(null),
-                'update_at'=> $this->datetime()->null()->defaultValue(null),
+                'created_at'=> $this->integer(),
+                'updated_at'=> $this->integer(),
             ],$tableOptions
         );
 
