@@ -10,7 +10,7 @@ use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
 
-$this->title = 'Berita';
+$this->title = 'Semua Berita';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= Html::img(Yii::getAlias('@imgBackend/berita/'.$berita->gambar_berita),['alt'=>'Gambar Berita','height'=>244, 'width'=>370])?>
                        <?=Html::a('+',\yii\helpers\Url::to(['site/berita','id'=>$berita->id_berita]),['class'=>'read-more'])?>
                         <div class="date-box">
-                            <?=Html::encode(''
+                            <?=Html::encode(\Carbon\Carbon::createFromTimestampUTC($berita->created_at)->format('d M')
                             )?>
                         </div><!-- /.date-box -->
                     </div><!-- /.img-box -->

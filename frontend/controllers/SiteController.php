@@ -128,13 +128,7 @@ class SiteController extends Controller
 
 
 
-    public function actionSemuaBerita()
-    {
-        $model = Berita::find()->orderBy('created_at DESC')->all();
-        return $this->render('allberita',[
-            'model'=>$model
-        ]);
-    }
+
 
     public function actionHowTo()
     {
@@ -143,13 +137,7 @@ class SiteController extends Controller
 
 
 
-    public function actionBerita($id)
-    {
-        $berita = Berita::findOne(['id_berita'=>$id]);
-        return $this->render('berita',[
-            'berita'=>$berita,
-        ]);
-    }
+
 
     public function actionProduk($id)
     {
