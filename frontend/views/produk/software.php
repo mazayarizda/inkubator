@@ -5,39 +5,42 @@
  * Date: 04/04/2018
  * Time: 20:15
  */
-use common\models\Berita;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
 
-$this->title = 'Tag '.$tag->nama_tag;
+$this->title = 'Semua Produk';
 $this->params['breadcrumbs'][] = $this->title;
+$count = 0;
 ?>
+
 
 
 <section class="blog-style-one">
     <div class="thm-container">
         <div class="row">
 
-            <?php foreach ($model as $tag_berita):?>
+            <?php foreach ($model as $produk):?>
+
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single-blog-style-one">
                         <div class="img-box">
-                            <?= Html::img(Yii::getAlias('@imgBackend/berita/'.$tag_berita->berita->gambar_berita),['alt'=>'Gambar Berita','height'=>244, 'width'=>370])?>
-                            <?=Html::a('+',\yii\helpers\Url::to(['berita/view','id'=>$tag_berita->berita->id_berita]),['class'=>'read-more'])?>
+                            <?= Html::img(Yii::getAlias('@imgBackend/produk/'.$gambar[$count]),['alt'=>'Gambar Produk','height'=>244, 'width'=>370])?>
+                            <?=Html::a('+',\yii\helpers\Url::to(['software/view','id'=>$produk->id_produk]),['class'=>'read-more'])?>
                             <div class="date-box">
-                                <?=Html::encode(\Carbon\Carbon::createFromTimestampUTC($tag_berita->berita->created_at)->format('d M')
+                                <?=Html::encode(\Carbon\Carbon::createFromTimestampUTC($produk->created_at)->format('d M')
                                 )?>
                             </div><!-- /.date-box -->
                         </div><!-- /.img-box -->
                         <div class="text-box">
-                            <?=Html::a('<h3>'.$tag_berita->berita->judul_berita.'</h3>',\yii\helpers\Url::to(['berita/view','id'=>$tag_berita->berita->id_berita]))?>
-                            <p><?=$tag_berita->berita->inti_berita?></p>
+                            <?=Html::a('<h3>'.$produk->nama_produk.'</h3>',\yii\helpers\Url::to(['berita/view','id'=>$produk->id_produk]))?>
                         </div><!-- /.text-box -->
                     </div><!-- /.single-blog-style-one -->
                 </div><!-- /.col-md-4 -->
-            <?php endforeach;?>
 
+            <?php
+            $count++;
+            endforeach;?>
         </div><!-- /.row -->
     </div><!-- /.thm-container -->
 </section><!-- /.blog-style-one -->

@@ -39,7 +39,7 @@ $profil = \common\models\Profil::findOne(1);
 
                             </li>
                             <li>
-                                <?= \yii\helpers\Html::a('Training', ['produk/pelatihan']) ?>
+                                <?= \yii\helpers\Html::a('Training', ['produk/training']) ?>
 
                             </li>
                         </ul><!-- /.sub-menu -->

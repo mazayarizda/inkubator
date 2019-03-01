@@ -11,24 +11,10 @@ use yii\widgets\Breadcrumbs;
  */
 
 $this->title = $berita->judul_berita;
-$this->params['breadcrumbs'][] = ['label' => 'Berita', 'url' => ['berita']];
+$this->params['breadcrumbs'][] = ['label' => 'Berita', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="inner-banner">
-    <div class="thm-container">
-        <?=
-        Breadcrumbs::widget(
-            [
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                'class'=>'breadcumb'
-            ]
-        ) ?>
-
-        <h3><?=$this->title?></h3>
-    </div><!-- /.thm-container -->
-</div><!-- /.inner-banner -->
-<!-- /banner_bottom_agile_info -->
 
 
 

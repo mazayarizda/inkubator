@@ -5,7 +5,6 @@
  * Date: 04/04/2018
  * Time: 20:15
  */
-use common\models\Berita;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
@@ -14,25 +13,12 @@ $this->title = 'Semua Berita';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="inner-banner">
-    <div class="thm-container">
-        <?=
-        Breadcrumbs::widget(
-            [
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                'class'=>'breadcumb'
-            ]
-        ) ?>
-
-        <h3><?=$this->title?></h3>
-    </div><!-- /.thm-container -->
-</div><!-- /.inner-banner -->
 
 <section class="blog-style-one">
     <div class="thm-container">
         <div class="row">
 
-            <?php foreach ($model->berita as $berita):?>
+            <?php foreach ($model as $berita):?>
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="single-blog-style-one">
                     <div class="img-box">

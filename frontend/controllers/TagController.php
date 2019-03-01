@@ -17,6 +17,17 @@ use yii\web\Controller;
 class TagController extends Controller
 {
 
+    /**
+     * @inheritdoc
+     */
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+        ];
+    }
 
     public function actionView($id){
         $tag = Tag::findOne($id);

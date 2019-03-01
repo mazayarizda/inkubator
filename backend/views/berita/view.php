@@ -50,7 +50,7 @@ if(Yii::$app->session->hasFlash('success'))
                             }],
                         [
                             'attribute'=>'gambar_berita',
-                            'format'=>'raw',
+                            'format'=>['image',['height'=>75, 'width'=>75]],
                             'value'=> Yii::getAlias('@imgBackend/berita/'.$model->gambar_berita)
                         ],
                         'penerbitBerita.nama',
