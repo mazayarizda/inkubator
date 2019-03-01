@@ -10,6 +10,7 @@ namespace frontend\controllers;
 
 
 use common\models\Berita;
+use common\models\Tag;
 use yii\web\Controller;
 
 class BeritaController extends Controller
@@ -44,11 +45,15 @@ class BeritaController extends Controller
             'model'=>$model
         ]);
     }
-    public function actionBerita($id)
+    public function actionView($id)
     {
         $berita = Berita::findOne(['id_berita'=>$id]);
+        $latestBerita = Berita::find()->orderBy('created_at DESC')-> limit(3)->all();
+        $recentPost = Tag::find()->where(['count'=> '>0'])->orderBy('count')->limit(8)->all();
         return $this->render('berita',[
             'berita'=>$berita,
+            'latestBerita'=>$latestBerita,
+            'recentPost'=>$recentPost
         ]);
     }
 }

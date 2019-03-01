@@ -32,19 +32,19 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="thm-container">
         <div class="row">
 
-            <?php foreach ($model as $berita):?>
+            <?php foreach ($model->berita as $berita):?>
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="single-blog-style-one">
                     <div class="img-box">
                         <?= Html::img(Yii::getAlias('@imgBackend/berita/'.$berita->gambar_berita),['alt'=>'Gambar Berita','height'=>244, 'width'=>370])?>
-                       <?=Html::a('+',\yii\helpers\Url::to(['site/berita','id'=>$berita->id_berita]),['class'=>'read-more'])?>
+                       <?=Html::a('+',\yii\helpers\Url::to(['berita/view','id'=>$berita->id_berita]),['class'=>'read-more'])?>
                         <div class="date-box">
                             <?=Html::encode(\Carbon\Carbon::createFromTimestampUTC($berita->created_at)->format('d M')
                             )?>
                         </div><!-- /.date-box -->
                     </div><!-- /.img-box -->
                     <div class="text-box">
-                        <?=Html::a('<h3>'.$berita->judul_berita.'</h3>',\yii\helpers\Url::to(['site/berita','id'=>$berita->id_berita]))?>
+                        <?=Html::a('<h3>'.$berita->judul_berita.'</h3>',\yii\helpers\Url::to(['berita/view','id'=>$berita->id_berita]))?>
                         <p><?=$berita->inti_berita?></p>
                     </div><!-- /.text-box -->
                 </div><!-- /.single-blog-style-one -->

@@ -35,11 +35,11 @@ $profil = \common\models\Profil::findOne(1);
                         <a href="#">Produk</a>
                         <ul class="sub-menu">
                             <li>
-                                <?= \yii\helpers\Html::a('Software', ['site/kategori','id'=>0]) ?>
+                                <?= \yii\helpers\Html::a('Software', ['produk/software']) ?>
 
                             </li>
                             <li>
-                                <?= \yii\helpers\Html::a('Training', ['site/pelatihan']) ?>
+                                <?= \yii\helpers\Html::a('Training', ['produk/pelatihan']) ?>
 
                             </li>
                         </ul><!-- /.sub-menu -->
