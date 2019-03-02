@@ -46,7 +46,10 @@ class BinmpAsset extends AssetBundle
         'plugins/revolution/js/extensions/revolution.extension.parallax.min.js',
         'plugins/revolution/js/extensions/revolution.extension.slideanims.min.js',
         'plugins/revolution/js/extensions/revolution.extension.video.min.js',
-        'js/main-slider-script.js'
+        'js/main-slider-script.js',
+        'https://maps.googleapis.com/maps/api/js?key=AIzaSyDTPlX-43R1TpcQUyWjFgiSfL_BiGxslZU',
+        'js/gmaps.js',
+        'js/map-helper.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -20,6 +20,7 @@ $profil = \common\models\Profil::findOne(1);
             --><a href="#" class="fab fa-facebook-f"></a><!--
             --><a href="#" class="fab fa-instagram"></a><!--
             --><a href="#" class="fab fa-google-plus-g"></a>
+                 <a href="#" class="fab fa-whatsapp"></a>
         </div><!-- /.social pull-right -->
     </div><!-- /.thm-container clearfix -->
 </div><!-- /.footer-top -->

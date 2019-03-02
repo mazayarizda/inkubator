@@ -7,6 +7,7 @@
  */
 
 use yii\helpers\Html;
+
 $profil = \common\models\Profil::findOne(1);
 ?>
 
@@ -21,9 +22,9 @@ $profil = \common\models\Profil::findOne(1);
                     <i class="fas fa-bars"></i>
                 </button>
 
-                <a class="navbar-brand" href="<?=Yii::$app->getHomeUrl()?>">
+                <a class="navbar-brand" href="<?= Yii::$app->getHomeUrl() ?>">
                     <!--Yii::getAlias('@imgBackend/topbanner.jpg') -->
-                    <?= \yii\helpers\Html::img(Yii::getAlias('@imgBackend/profil/'.$profil->foto_profil), ['alt' => 'TopApp.id', 'height' => '25%', 'width' => '25%']) ?>
+                    <?= \yii\helpers\Html::img(Yii::getAlias('@imgBackend/profil/' . $profil->foto_profil), ['alt' => 'TopApp.id', 'height' => '25%', 'width' => '25%']) ?>
                 </a>
             </div>
 
@@ -64,13 +65,22 @@ $profil = \common\models\Profil::findOne(1);
                     <li>
                         <?= \yii\helpers\Html::a('Kontak', ['site/contact']) ?>
 
-                        </li>
+                    </li>
+                    <li>
+                        <?= \yii\helpers\Html::a('Panduan', ['site/how-to']) ?>
+                    </li>
                     <li>
                         <?= \yii\helpers\Html::a(Yii::$app->getUser()->getIsGuest() ? 'Login' : Yii::$app->getUser()->getIdentity()->nama, ['site/login']) ?>
                         <?php if (!Yii::$app->getUser()->getIsGuest()) : ?>
                             <ul class="sub-menu">
                                 <li>
-                                    <?= \yii\helpers\Html::a('Profil',['user/view']) ?>
+                                    <?= \yii\helpers\Html::a('Profil', ['user/view']) ?>
+                                </li>
+                                <li>
+                                    <?= \yii\helpers\Html::a('Cart', ['cart/index']) ?>
+                                </li>
+                                <li>
+                                    <?= \yii\helpers\Html::a('Transaksi', ['transaksi/index']) ?>
                                 </li>
                                 <li>  <?= Html::a(
                                         'Sign out',

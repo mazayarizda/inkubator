@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use backend\models\Admin;
 use Carbon\Carbon;
 use common\models\Berita;
 use common\models\DetailProduk;
@@ -94,7 +95,10 @@ class SiteController extends Controller
 
     public function actionProfil()
     {
-        return $this->render('profil');
+        $model = Profil::findOne(1);
+        $admin = Admin::find(['nama','avatar'])->where(['id'=>1])->one();
+
+        return $this->render('profil',['model'=>$model,'admin'=>$admin]);
     }
 
     public function actionContact()
@@ -120,8 +124,6 @@ class SiteController extends Controller
 
         return $this->render('kategori',['kat'=>$kat,'kategoris'=>$kategoris,'produks'=>$produks]);
     }
-
-
 
 
 
