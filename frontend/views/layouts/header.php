@@ -6,7 +6,9 @@
  * Time: 20:57
  */
 
-use yii\helpers\Html; ?>
+use yii\helpers\Html;
+$profil = \common\models\Profil::findOne(1);
+?>
 
 
 <header class="header header-home-one">
@@ -19,9 +21,9 @@ use yii\helpers\Html; ?>
                     <i class="fas fa-bars"></i>
                 </button>
 
-                <a class="navbar-brand" href="<?=\yii\helpers\Url::to(['site/index'])?>">
+                <a class="navbar-brand" href="<?=Yii::$app->getHomeUrl()?>">
                     <!--Yii::getAlias('@imgBackend/topbanner.jpg') -->
-                    <?= \yii\helpers\Html::img('', ['alt' => 'TopApp.id', 'height' => '%', 'width' => '15%']) ?>
+                    <?= \yii\helpers\Html::img(Yii::getAlias('@imgBackend/profil/'.$profil->foto_profil), ['alt' => 'TopApp.id', 'height' => '25%', 'width' => '25%']) ?>
                 </a>
             </div>
 
@@ -33,11 +35,11 @@ use yii\helpers\Html; ?>
                         <a href="#">Produk</a>
                         <ul class="sub-menu">
                             <li>
-                                <?= \yii\helpers\Html::a('Software', ['site/kategori','id'=>0]) ?>
+                                <?= \yii\helpers\Html::a('Software', ['produk/software']) ?>
 
                             </li>
                             <li>
-                                <?= \yii\helpers\Html::a('Training', ['site/pelatihan']) ?>
+                                <?= \yii\helpers\Html::a('Training', ['produk/training']) ?>
 
                             </li>
                         </ul><!-- /.sub-menu -->
@@ -51,11 +53,11 @@ use yii\helpers\Html; ?>
                         <a href="#">Blog</a>
                         <ul class="sub-menu right-align">
                             <li>
-                                <?= \yii\helpers\Html::a('Berita', ['site/semua-berita']) ?>
+                                <?= \yii\helpers\Html::a('Berita', ['berita/index']) ?>
 
                             </li>
                             <li>
-                                <?= \yii\helpers\Html::a('Kegiatan Kami', ['site/berita']) ?>
+                                <?= \yii\helpers\Html::a('Kegiatan Kami', ['kegiatan/index']) ?>
                             </li>
                         </ul><!-- /.sub-menu -->
                     </li>

@@ -6,13 +6,14 @@
  * Time: 21:03
  */
 
+$profil = \common\models\Profil::findOne(1);
 ?>
 
 
 <div class="footer-top">
     <div class="thm-container clearfix">
         <div class="logo pull-left">
-            <a href="index.html"><img src="img/logo-1-1.png" alt="Awesome Image"/></a>
+            <?= \yii\helpers\Html::img(Yii::getAlias('@imgBackend/profil/'.$profil->foto_profil), ['alt' => 'TopApp.id', 'height' => '25%', 'width' => '25%']) ?>
         </div><!-- /.logo pull-left -->
         <div class="social pull-right">
             <a href="#" class="fab fa-twitter"></a><!--
@@ -24,7 +25,7 @@
 </div><!-- /.footer-top -->
 <div class="footer-bottom text-center">
     <div class="thm-container">
-        <p>&copy; copyright 2018 by Layerdrops.com</p>
+        <p>&copy; copyright <?=\Carbon\Carbon::now()->format('Y')?> by TopApp.id</p>
     </div><!-- /.thm-container -->
 </div><!-- /.footer-bottom -->
 

@@ -15,6 +15,18 @@ use yii\web\UploadedFile;
  */
 class UserController extends Controller
 {
+
+    /**
+     * @inheritdoc
+     */
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+        ];
+    }
     /**
      * @inheritdoc
      */

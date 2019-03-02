@@ -5,28 +5,14 @@
  * Date: 04/04/2018
  * Time: 20:15
  */
-use common\models\Berita;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
 
-$this->title = 'Berita';
+$this->title = 'Semua Berita';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="inner-banner">
-    <div class="thm-container">
-        <?=
-        Breadcrumbs::widget(
-            [
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                'class'=>'breadcumb'
-            ]
-        ) ?>
-
-        <h3><?=$this->title?></h3>
-    </div><!-- /.thm-container -->
-</div><!-- /.inner-banner -->
 
 <section class="blog-style-one">
     <div class="thm-container">
@@ -37,14 +23,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="single-blog-style-one">
                     <div class="img-box">
                         <?= Html::img(Yii::getAlias('@imgBackend/berita/'.$berita->gambar_berita),['alt'=>'Gambar Berita','height'=>244, 'width'=>370])?>
-                       <?=Html::a('+',\yii\helpers\Url::to(['site/berita','id'=>$berita->id_berita]),['class'=>'read-more'])?>
+                       <?=Html::a('+',\yii\helpers\Url::to(['berita/view','id'=>$berita->id_berita]),['class'=>'read-more'])?>
                         <div class="date-box">
-                            <?=Html::encode(''
+                            <?=Html::encode(\Carbon\Carbon::createFromTimestampUTC($berita->created_at)->format('d M')
                             )?>
                         </div><!-- /.date-box -->
                     </div><!-- /.img-box -->
                     <div class="text-box">
-                        <?=Html::a('<h3>'.$berita->judul_berita.'</h3>',\yii\helpers\Url::to(['site/berita','id'=>$berita->id_berita]))?>
+                        <?=Html::a('<h3>'.$berita->judul_berita.'</h3>',\yii\helpers\Url::to(['berita/view','id'=>$berita->id_berita]))?>
                         <p><?=$berita->inti_berita?></p>
                     </div><!-- /.text-box -->
                 </div><!-- /.single-blog-style-one -->
