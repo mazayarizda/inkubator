@@ -3009,5 +3009,8 @@ a:active {
   color: #fff;
   background: #6278CD;
 }
+.breadcrumb{
+  background-color: transparent;
+}
 
 /*# sourceMappingURL=style.css.map */
