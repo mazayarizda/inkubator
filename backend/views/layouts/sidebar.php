@@ -50,14 +50,14 @@ $controllerName = substr($route,0,strpos($route,'/'));
                 [
                     'items' => [
                         ['label'=>'Beranda', 'icon'=>'zmdi-view-dashboard','url'=>['/site'],'template'=>$controllerName == 'site'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
+                        ['label'=>'Kategori', 'icon'=>'zmdi-local-offer','url'=>['/kategori'],'template'=>$controllerName == 'kategori'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
+                        ['label'=>'Tag', 'icon'=>'zmdi-tag','url'=>['/tag'],'template'=>$controllerName == 'tag'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
+                        ['label'=>'Order', 'icon'=>'zmdi-shopping-cart','url'=>['/order'],'template'=>$controllerName == 'order'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Produk   ', 'icon'=>'zmdi-code','url'=>['/produk'],'template'=>$controllerName == 'produk'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Berita', 'icon'=>'zmdi-blogger','url'=>['/berita'],'template'=>$controllerName == 'berita'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
+                        ['label'=>'Training', 'icon'=>'zmdi-code-setting','url'=>['/training'],'template'=>$controllerName == 'training'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Team', 'icon'=>'zmdi-account-circle','url'=>['/team'],'template'=>$controllerName == 'team'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
-                        ['label'=>'Tag', 'icon'=>'zmdi-tag','url'=>['/tag'],'template'=>$controllerName == 'tag'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Pengguna', 'icon'=>'zmdi-accounts','url'=>['/user'],'template'=>$controllerName == 'user'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
-                        ['label'=>'Carousel', 'icon'=>'zmdi-landscape','url'=>['/carousel'],'template'=>$controllerName == 'carousel'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
-                        ['label'=>'Order', 'icon'=>'zmdi-shopping-cart','url'=>['/order'],'template'=>$controllerName == 'order'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
-                        ['label'=>'Kategori', 'icon'=>'zmdi-local-offer','url'=>['/kategori'],'template'=>$controllerName == 'kategori'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
                         ['label'=>'Profil', 'icon'=>'zmdi-file','url'=>['/profil'],'template'=>$controllerName == 'profil'? '<a href="{url}" class="waves-effect active">{icon} {label}</a>': '<a href="{url}" class="waves-effect">{icon} {label}</a>'],
 
                     ]

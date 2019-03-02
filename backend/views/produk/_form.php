@@ -8,7 +8,7 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
-use backend\models\Kategori;
+use common\models\Kategori;
 
 
 /* @var $this yii\web\View */
@@ -81,19 +81,10 @@ use backend\models\Kategori;
 	<?php
 	if(!$produk->isNewRecord){
 
-//		$data = Yii::$app->db->createCommand('select * from produk where id_produk = '.$produk->id_produk)->queryAll();
-//		$a = [];
-//		$b = [];
-//		for($i= 0; $i<count($data); $i++){
-//			array_push($a,array(Yii::$app->basePath.'/web/upload/source_code/'.$data[$i]['source_code']));
-//			array_push($b,array('caption'=>$data[$i]['source_code']));
-//		}
-//		var_dump(Yii::$app->urlManager->getBaseUrl().'/upload/source_code/'.$produk->source_code);
-
 		echo $form->field($produk, 'source_code')->widget(FileInput::className(),[
 			'options'=>['accept'=>'*','multiple'=>false],
 			'pluginOptions' => [
-				'initialPreview'=> $produk->source_code != null?Yii::$app->urlManager->getBaseUrl().'/upload/source_code/'.$produk->source_code: false,
+				'initialPreview'=> $produk->source_code != null? Yii::getAlias('@uploadBackend/source_code/'.$produk->source_code): false,
 				'initialPreviewConfig' =>[
 				       ['caption'=> $produk->source_code,
                         'type'=>'other']
@@ -108,12 +99,11 @@ use backend\models\Kategori;
 			],
 		]) ;
 
-//		var_dump(Yii::$app->urlManager->getBaseUrl().'/upload/manual/'.$produk->manual_book);
 
         echo $form->field($produk, 'manual_book')->widget(FileInput::className(),[
             'options'=>['accept'=>'*','multiple'=>false],
             'pluginOptions' => [
-                'initialPreview'=> $produk->manual_book != null? Yii::$app->urlManager->getBaseUrl().'/upload/manual/'.$produk->manual_book : false,
+                'initialPreview'=> $produk->manual_book != null? Yii::getAlias('@uploadBackend/manual_book/'.$produk->manual_book) : false,
                 'initialPreviewConfig' =>[
                        [ 'caption'=>$produk->manual_book,
                  'type' =>'pdf']
@@ -128,14 +118,11 @@ use backend\models\Kategori;
             ],
         ]) ;
 
-//        var_dump(Yii::$app->urlManager->getBaseUrl().'/upload/rancangan/'.$produk->rancangan);
         echo $form->field($produk, 'rancangan')->widget(FileInput::className(),[
             'options'=>['accept'=>'*','multiple'=>false],
             'pluginOptions' => [
-                'initialPreview'=>$produk->rancangan != null? Yii::$app->urlManager->getBaseUrl().'/upload/rancangan/'.$produk->rancangan: false,
+                'initialPreview'=>$produk->rancangan != null? Yii::getAlias('@uploadBackend/rancangan/'.$produk->rancangan): false,
                 'initialPreviewConfig' =>[
-//                        ['caption'=>$produk->rancangan]
-////                        'type'=>'any'
                     ['caption'=>$produk->rancangan,
                         'type'=>'pdf']
                     ],
@@ -174,12 +161,13 @@ use backend\models\Kategori;
     <?php
     if(!$produk->isNewRecord){
 
-        $data = Yii::$app->db->createCommand('select * from detail_produk where id_produk = '.$produk->id_produk)->queryAll();
         $a = [];
         $b = [];
-        for($i= 0; $i<count($data); $i++){
-            array_push($a,array(Yii::$app->urlManager->getBaseUrl().'/images/produk/'.$data[$i]['gambar']));
-            array_push($b,array('caption'=>$data[$i]['gambar']));
+        $details = $produk->detailProduks;
+
+        foreach ($details as $data){
+            array_push($a,array(Yii::getAlias('@imgBackend/produk/'.$data['gambar'])));
+            array_push($b,array('caption'=>$data['gambar']));
         }
         echo $form->field($detail_produk, 'gambar[]')->widget(FileInput::className(),[
             'options'=>['accept'=>'image/*','multiple'=>true],

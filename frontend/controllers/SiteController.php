@@ -35,13 +35,8 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['produk','logout', 'signup'],
+                'only' => ['logout', 'signup'],
                 'rules' => [
-                    [
-                        'actions'=>['produk'],
-                        'allow'=>true,
-                        'roles'=>['@']
-                    ],
                     [
                         'actions' => ['signup'],
                         'allow' => true,
@@ -128,10 +123,7 @@ class SiteController extends Controller
 
 
 
-    public function actionSemuaBerita()
-    {
-        return $this->render('allberita');
-    }
+
 
     public function actionHowTo()
     {
@@ -139,27 +131,6 @@ class SiteController extends Controller
     }
 
 
-
-    public function actionBerita($id)
-    {
-        $berita = Berita::findOne(['id_berita'=>$id]);
-        return $this->render('berita',[
-            'berita'=>$berita,
-        ]);
-    }
-
-    public function actionProduk($id)
-    {
-        $produk = Produk::findOne(['id_produk'=>$id]);
-        $gambar = DetailProduk::find()->where(['id_produk'=>$id])->all();
-//        echo '<pre>';
-//        print_r($gambar);
-//        exit();
-        return $this->render('produk',[
-            'produk'=>$produk,
-            'gambar'=>$gambar
-        ]);
-    }
 
     /**
      * Logs in a user.
@@ -195,28 +166,6 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return mixed
-     */
-    //public function actionContact()
-    //{
-      //  $model = new ContactForm();
-        //if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-          //  if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-            //    Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-            //} else {
-              //  Yii::$app->session->setFlash('error', 'There was an error sending your message.');
-            //}
-
-            //return $this->refresh();
-        //} else {
-          //  return $this->render('contact', [
-            //    'model' => $model,
-            //]);
-        //}
-   // }
 
     /**
      * Displays about page.
@@ -295,19 +244,5 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
-    }
-    public function actionTags($id){
-	    $tag = Tag::findOne($id);
-	    $model = TagBerita::find()->where(['id_tag'=>$id])->all();
-	    $data = [];
-
-	    foreach ($model as $mod){
-		    $berita = Berita::findOne(['id_berita'=>$mod->id_berita]);
-		    array_push($data,$berita);
-	    }
-//	    echo '<pre>';
-//		print_r($data);
-//		exit();
-	    return $this->render('tag',['model'=>$data,'tag'=>$tag]);
     }
 }

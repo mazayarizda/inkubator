@@ -77,9 +77,6 @@ class KategoriController extends Controller
     {
         $model = new Kategori();
         $data = Yii::$app->request->post();
-        date_default_timezone_set('Asia/Jakarta');
-        $model->created_at = date('Y-m-d h:i:s');
-        $model->updated_at = date('Y-m-d h:i:s');
         if ($model->load($data)) {
 
 
@@ -106,12 +103,7 @@ class KategoriController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        date_default_timezone_set('Asia/Jakarta');
-        $model->updated_at = date('Y-m-d h:i:s');
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-
 
             Yii::$app->session->setFlash('success',"Kategori berhasil diperbarui.");
             return $this->redirect(['view', 'id' => $model->id_kategori]);
@@ -132,6 +124,8 @@ class KategoriController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        Yii::$app->session->setFlash('success',"Kategori berhasil dihapus.");
+
 
         return $this->redirect(['index']);
     }

@@ -38,6 +38,7 @@ if(Yii::$app->session->hasFlash('success')){
                     'attributes' => [
                        // 'id_tag',
                         'nama_tag',
+                        'count',
                         'created_at:datetime',
                         'updated_at:datetime',
                     ],

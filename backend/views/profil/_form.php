@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'foto_profil')->widget(FileInput::className(),[
         'options'=>['accept'=>'image/*','multiple'=>false],
         'pluginOptions' => [
-            'initialPreview'=> isset($model->foto_profil)? Yii::$app->urlManager->getBaseUrl().'/images/profil/'.$model->foto_profil: false,
+            'initialPreview'=> isset($model->foto_profil)? Yii::getAlias('@imgBackend/profil/'.$model->foto_profil) : false,
             'initialPreviewAsData'=>true,
             'initialCaption'=>$model->foto_profil,
             'initialPreviewConfig' => [

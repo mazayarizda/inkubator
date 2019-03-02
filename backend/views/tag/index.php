@@ -36,8 +36,9 @@ if(Yii::$app->session->hasFlash('success'))
 
                                 //'id_tag',
                                 'nama_tag',
-                                'created_at:date',
-                                'updated_at:date',
+                                'count',
+                                'created_at:datetime',
+                                'updated_at:datetime',
 
                                 ['class' => 'yii\grid\ActionColumn','header' => 'Aksi'],
                             ],
