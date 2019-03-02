@@ -864,10 +864,3 @@ use yii\helpers\Html;
     </div><!-- /.thm-container -->
 </section><!-- /.contact-style-one -->
 
-
-
-<?= $this->render('isi_utama',[
-    'produk'=>$product,
-    'berita'=>$berita
-]) ?>
-

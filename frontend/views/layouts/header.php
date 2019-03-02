@@ -21,7 +21,7 @@ $profil = \common\models\Profil::findOne(1);
                     <i class="fas fa-bars"></i>
                 </button>
 
-                <a class="navbar-brand" href="<?=\yii\helpers\Url::to(['site/index'])?>">
+                <a class="navbar-brand" href="<?=Yii::$app->getHomeUrl()?>">
                     <!--Yii::getAlias('@imgBackend/topbanner.jpg') -->
                     <?= \yii\helpers\Html::img(Yii::getAlias('@imgBackend/profil/'.$profil->foto_profil), ['alt' => 'TopApp.id', 'height' => '25%', 'width' => '25%']) ?>
                 </a>

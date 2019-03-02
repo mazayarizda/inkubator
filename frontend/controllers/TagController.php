@@ -12,6 +12,7 @@ namespace frontend\controllers;
 use common\models\Berita;
 use common\models\Tag;
 use common\models\TagBerita;
+use common\models\TagTraining;
 use yii\web\Controller;
 
 class TagController extends Controller
@@ -32,9 +33,11 @@ class TagController extends Controller
     public function actionView($id){
         $tag = Tag::findOne($id);
         $model = TagBerita::find()->where(['id_tag'=>$id])->all();
+        $modelTraining = TagTraining::find()->where(['id_tag'=>$id])->all();
         return $this->render(
             'tag-item',
             ['model'=>$model,
+                'modelTraining'=>$modelTraining,
                 'tag'=>$tag]);
     }
 }

@@ -33,7 +33,7 @@ $count = 0;
                             </div><!-- /.date-box -->
                         </div><!-- /.img-box -->
                         <div class="text-box">
-                            <?=Html::a('<h3>'.$produk->nama_produk.'</h3>',\yii\helpers\Url::to(['berita/view','id'=>$produk->id_produk]))?>
+                            <?=Html::a('<h3>'.$produk->nama_produk.'</h3>',\yii\helpers\Url::to(['software/view','id'=>$produk->id_produk]))?>
                         </div><!-- /.text-box -->
                     </div><!-- /.single-blog-style-one -->
                 </div><!-- /.col-md-4 -->

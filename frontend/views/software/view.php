@@ -10,9 +10,10 @@ use yii\widgets\Breadcrumbs;
  * Time: 17:02
  */
 
-$this->title = $berita->judul_berita;
-$this->params['breadcrumbs'][] = ['label' => 'Berita', 'url' => ['index']];
+$this->title = $software->nama_produk;
+$this->params['breadcrumbs'][] = ['label' => 'Software', 'url' => ['produk/software']];
 $this->params['breadcrumbs'][] = $this->title;
+$count = 0;
 ?>
 
 
@@ -24,26 +25,28 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-8">
                 <div class="single-blog-details-content">
                     <div class="featured-img-box">
-                        <?= Html::img(Yii::getAlias('@imgBackend/berita/'.$berita->gambar_berita),['alt'=>'Gambar Berita','height'=>434, 'width'=>770])?>
+                        <?= Html::img(Yii::getAlias('@imgBackend/produk/'.$gambar->gambar),['alt'=>'Gambar Produk','height'=>434, 'width'=>770])?>
                         <div class="date-box">
-                            <?=Html::encode(\Carbon\Carbon::createFromTimestampUTC($berita->created_at)->format('d M')) ?>
+                            <?=Html::encode(\Carbon\Carbon::createFromTimestampUTC($software->created_at)->format('d M')) ?>
                         </div><!-- /.date-box -->
                     </div><!-- /.img-box -->
                     <div class="text-box">
                         <h3><?=$this->title?></h3>
                         <div class="meta-info">
-                            <a href="#"><?=$berita->penerbitBerita->nama?></a>
+                            <a href="#"><?=$software->addedBy->nama?></a>
                             <span class="sep">-</span>
-                            <?=$berita->tagLinks?>
+                            <?=$software->kategoriProduk->nama_kategori?>
                         </div><!-- /.meta-info -->
-                        <?=$berita->isi_berita?>
+                        <?=$software->deskripsi_produk?>
+                        <?=$software->fitur_produk?>
+                        <?=$software->spesifikasi?>
                     </div><!-- /.text-box -->
                     <div class="author-box clearfix">
                         <div class="img-box">
-                            <?= Html::img(Yii::getAlias('@imgBackend/avatar/'.$berita->penerbitBerita->avatar),['alt'=>'Gambar Penerbit Berita'])?>
+                            <?= Html::img(Yii::getAlias('@imgBackend/avatar/'.$software->addedBy->avatar),['alt'=>'Gambar Penerbit Berita'])?>
                         </div><!-- /.img-box -->
                         <div class="text-box">
-                            <h3><?=$berita->penerbitBerita->nama?></h3>
+                            <h3><?=$software->addedBy->nama?></h3>
                             <p>Pengelola Situs TopApp.id</p>
                         </div><!-- /.text-box -->
                     </div><!-- /.author-box -->
@@ -54,32 +57,49 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="sidebar sidebar-right">
                     <div class="single-sidebar recent-post-sidebar">
                         <div class="title">
-                            <h3>Berita Terbaru</h3>
+                            <h3>Produk Terbaru</h3>
                         </div><!-- /.title -->
-                        <?php foreach ($latestBerita as $item):?>
+                        <?php foreach ($latestProduk as $item):?>
+
                             <div class="single-recent-post">
                                 <div class="img-box">
-                                    <?= Html::img(Yii::getAlias('@imgBackend/berita/'.$item->gambar_berita),['alt'=>'gambar berita',
+                                    <?= Html::img(Yii::getAlias('@imgBackend/produk/'.$gambarLatestProduk[$count]->gambar),['alt'=>'gambar produk',
                                         'height'=>59, 'width'=>59])?>
                                 </div><!-- /.img-box -->
                                 <div class="text-box">
-                                    <?=Html::a('<h4>'.$item->judul_berita.'</h4>',\yii\helpers\Url::to(['berita/view','id'=>$item->id_berita]))?>
+                                    <?=Html::a('<h4>'.$item->nama_produk.'</h4>',\yii\helpers\Url::to(['software/view','id'=>$item->id_produk]))?>
                                 </div><!-- /.text-box -->
                             </div><!-- /.single-recent-post -->
 
 
-                        <?php endforeach;?>
+
+                        <?php
+                        $count++;
+                        endforeach;?>
 
 
-                                            </div><!-- /.single-sidebar recent-post-sidebar -->
+                    </div><!-- /.single-sidebar recent-post-sidebar -->
                     <div class="single-sidebar categories-sidebar">
                         <div class="title">
-                            <h3>Terbitan terbaru</h3>
+                            <h3>Kategori</h3>
+                        </div><!-- /.title -->
+                        <ul class="category-lists">
+                            <?php foreach ($kategori as $tag): ?>
+                            <li>
+                                <?= Html::a($tag->nama_kategori.'<i class="fa fa-angle-right"></i>',\yii\helpers\Url::to(['kategori/view','id'=>$tag->id_kategori]))?>
+                            </li>
+
+                            <?php endforeach; ?>
+                        </ul><!-- /.category-lists -->
+                    </div><!-- /.single-sidebar categories-sidebar -->
+                    <div class="single-sidebar categories-sidebar">
+                        <div class="title">
+                            <h3>Recent Posts</h3>
                         </div><!-- /.title -->
                         <ul class="tags-lists">
                             <?php foreach ($recentPost as $tag): ?>
-                            <li><?= Html::a($tag->nama_tag,\yii\helpers\Url::to(['tag/view','id'=>$tag->id
-                                ])) ?></li>
+                                <li><?= Html::a($tag->nama_tag,\yii\helpers\Url::to(['tag/view','id'=>$tag->id
+                                    ])) ?></li>
                             <?php endforeach; ?>
 
                         </ul><!-- /.tags-lists -->

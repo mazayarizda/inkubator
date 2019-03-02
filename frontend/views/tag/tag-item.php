@@ -37,6 +37,23 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div><!-- /.single-blog-style-one -->
                 </div><!-- /.col-md-4 -->
             <?php endforeach;?>
+            <?php foreach ($modelTraining as $tag_training):?>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-blog-style-one">
+                        <div class="img-box">
+                            <?= Html::img(Yii::getAlias('@imgBackend/training/'.$tag_training->training->foto),['alt'=>'Gambar training','height'=>244, 'width'=>370])?>
+                            <?=Html::a('+',\yii\helpers\Url::to(['training/view','id'=>$tag_training->training->id]),['class'=>'read-more'])?>
+                            <div class="date-box">
+                                <?=Html::encode(\Carbon\Carbon::createFromTimestampUTC($tag_training->training->created_at)->format('d M')
+                                )?>
+                            </div><!-- /.date-box -->
+                        </div><!-- /.img-box -->
+                        <div class="text-box">
+                            <?=Html::a('<h3>'.$tag_training->training->nama_training.'</h3>',\yii\helpers\Url::to(['training/view','id'=>$tag_training->training->id]))?>
+                        </div><!-- /.text-box -->
+                    </div><!-- /.single-blog-style-one -->
+                </div><!-- /.col-md-4 -->
+            <?php endforeach;?>
 
         </div><!-- /.row -->
     </div><!-- /.thm-container -->

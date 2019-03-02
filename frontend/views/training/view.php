@@ -10,8 +10,8 @@ use yii\widgets\Breadcrumbs;
  * Time: 17:02
  */
 
-$this->title = $berita->judul_berita;
-$this->params['breadcrumbs'][] = ['label' => 'Berita', 'url' => ['index']];
+$this->title = $model->nama_training;
+$this->params['breadcrumbs'][] = ['label' => 'Produk', 'url' => ['produk/training']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -24,26 +24,26 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-8">
                 <div class="single-blog-details-content">
                     <div class="featured-img-box">
-                        <?= Html::img(Yii::getAlias('@imgBackend/berita/'.$berita->gambar_berita),['alt'=>'Gambar Berita','height'=>434, 'width'=>770])?>
+                        <?= Html::img(Yii::getAlias('@imgBackend/training/'.$model->foto),['alt'=>'Gambar Training','height'=>434, 'width'=>770])?>
                         <div class="date-box">
-                            <?=Html::encode(\Carbon\Carbon::createFromTimestampUTC($berita->created_at)->format('d M')) ?>
+                            <?=Html::encode(\Carbon\Carbon::createFromTimestampUTC($model->created_at)->format('d M')) ?>
                         </div><!-- /.date-box -->
                     </div><!-- /.img-box -->
                     <div class="text-box">
                         <h3><?=$this->title?></h3>
                         <div class="meta-info">
-                            <a href="#"><?=$berita->penerbitBerita->nama?></a>
+                            <a href="#"><?=$admin->nama?></a>
                             <span class="sep">-</span>
-                            <?=$berita->tagLinks?>
+                            <?=$model->tagLinks?>
                         </div><!-- /.meta-info -->
-                        <?=$berita->isi_berita?>
+                        <?=$model->deskripsi?>
                     </div><!-- /.text-box -->
                     <div class="author-box clearfix">
                         <div class="img-box">
-                            <?= Html::img(Yii::getAlias('@imgBackend/avatar/'.$berita->penerbitBerita->avatar),['alt'=>'Gambar Penerbit Berita'])?>
+                            <?= Html::img(Yii::getAlias('@imgBackend/avatar/'.$admin->avatar),['alt'=>'Gambar Penerbit Berita'])?>
                         </div><!-- /.img-box -->
                         <div class="text-box">
-                            <h3><?=$berita->penerbitBerita->nama?></h3>
+                            <h3><?=$admin->nama?></h3>
                             <p>Pengelola Situs TopApp.id</p>
                         </div><!-- /.text-box -->
                     </div><!-- /.author-box -->
@@ -54,16 +54,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="sidebar sidebar-right">
                     <div class="single-sidebar recent-post-sidebar">
                         <div class="title">
-                            <h3>Berita Terbaru</h3>
+                            <h3>Pelatihan Terbaru</h3>
                         </div><!-- /.title -->
-                        <?php foreach ($latestBerita as $item):?>
+                        <?php foreach ($latestTraining as $item):?>
                             <div class="single-recent-post">
                                 <div class="img-box">
-                                    <?= Html::img(Yii::getAlias('@imgBackend/berita/'.$item->gambar_berita),['alt'=>'gambar berita',
+                                    <?= Html::img(Yii::getAlias('@imgBackend/training/'.$item->foto),['alt'=>'gambar training',
                                         'height'=>59, 'width'=>59])?>
                                 </div><!-- /.img-box -->
                                 <div class="text-box">
-                                    <?=Html::a('<h4>'.$item->judul_berita.'</h4>',\yii\helpers\Url::to(['berita/view','id'=>$item->id_berita]))?>
+                                    <?=Html::a('<h4>'.$item->nama_training.'</h4>',\yii\helpers\Url::to(['training/view','id'=>$item->id]))?>
                                 </div><!-- /.text-box -->
                             </div><!-- /.single-recent-post -->
 
@@ -71,15 +71,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php endforeach;?>
 
 
-                                            </div><!-- /.single-sidebar recent-post-sidebar -->
+                    </div><!-- /.single-sidebar recent-post-sidebar -->
                     <div class="single-sidebar categories-sidebar">
                         <div class="title">
                             <h3>Terbitan terbaru</h3>
                         </div><!-- /.title -->
                         <ul class="tags-lists">
                             <?php foreach ($recentPost as $tag): ?>
-                            <li><?= Html::a($tag->nama_tag,\yii\helpers\Url::to(['tag/view','id'=>$tag->id
-                                ])) ?></li>
+                                <li><?= Html::a($tag->nama_tag,\yii\helpers\Url::to(['tag/view','id'=>$tag->id
+                                    ])) ?></li>
                             <?php endforeach; ?>
 
                         </ul><!-- /.tags-lists -->
