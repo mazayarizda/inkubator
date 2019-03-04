@@ -33,7 +33,7 @@ $count = 0;
                     <div class="text-box">
                         <h3><?=$this->title?></h3>
                         <div class="meta-info">
-                            <a href="#"><?=$software->addedBy->nama?></a>
+                            <a href="#"><?=$software->developer?></a>
                             <span class="sep">-</span>
                             <?=$software->kategoriProduk->nama_kategori?>
                         </div><!-- /.meta-info -->

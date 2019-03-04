@@ -9,7 +9,7 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
-
+$this->title ='Selamat Datang di TopApp.id';
 ?>
 
 

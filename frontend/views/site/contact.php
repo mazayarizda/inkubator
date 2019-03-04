@@ -5,54 +5,63 @@
  * Date: 01/03/2018
  * Time: 12:32
  */
-/* @var $this \yii\web\View */?>
+/* @var $this \yii\web\View */
+
+$this->title = 'Kontak';
+$this->params['breadcrumbs'][] = $this->title;
+
+?>
 <!-- /banner_bottom_agile_info -->
-<div class="page-head_agile_info_w3l">
-    <div class="container">
-        <h3>Contact<span> Us</span></h3>
-        <!--/w3_short-->
-        <div class="services-breadcrumb">
-            <div class="agile_inner_breadcrumb">
-                <ul class="w3_short">
-                    <li><a href="<?php echo Yii::$app->getHomeUrl();?>site/index">Home</a><i>|</i></li>
-                    <li>Contact</li>
-                </ul>
-            </div>
-        </div>
-        <!--//w3_short-->
-    </div>
-</div>
-<!--/contact-->
-<div class="banner_bottom_agile_info">
-    <div class="container">
-        <div class="contact-grid-agile-w3s">
-            <div class="row">
-                <div class="col-md-3 contact-grid-agile-w3">
-                    <div class="contact-grid-agile-w31">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <h4>Address</h4>
+<section class="contact-style-one">
+    <div class="thm-container">
+        <div class="row">
+            <div class="col-md-7 col-sm-6 col-xs-12">
+                <div class="contact-infos">
+                    <div class="single-contact-info">
+                        <?=\yii\helpers\Html::img(Yii::getAlias('@imgBackend/profil/'.$profil->foto_profil))?>
+                    </div>
+
+                </div>
+
+            </div><!-- /.col-md-7 -->
+            <div class="col-md-5 col-sm-6 col-xs-12">
+                <div class="contact-infos">
+                    <div class="title">
+                        <h3>Ada Pertanyaan? Silahkan kontak kami.</h3>
+                    </div><!-- /.title -->
+                    <div class="single-contact-info">
+                        <h4>Email <span><i class="fas fa-envelope"></i></span></h4>
+                        <p><?=$profil->email?></p>
+                    </div>
+                    <div class="single-contact-info">
+                        <h4>Alamat <span><i class="fas fa-map-marker"></i></span></h4>
                         <p><?=$profil->alamat?></p>
                     </div>
-                </div>
-                <div class="col-md-4 contact-grid-agile-w3">
-                    <div class="contact-grid-agile-w32">
-                        <i class="fa fa-phone" aria-hidden="true"></i>
-                        <h4>Whatsapp</h4>
-                        <p><a href="https://chat.whatsapp.com/FkJkah3OaXVAKKVXDV1Py2"><img src="http://pngimg.com/uploads/whatsapp/whatsapp_PNG21.png" widht="30" height="30"/> WhatsApp</a> </span> </p>
+                    <div class="single-contact-info">
+                        <h4>Nomor Telepon <span><i class="fas fa-phone"></i></span></h4>
+                        <p><?=$profil->hp?></p>
                     </div>
-                </div>
-                <div class="col-md-4 contact-grid-agile-w3">
-                    <div class="contact-grid-agile-w33">
-                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        <h4>Email</h4>
-                        <p><a href="mailto:<?=$profil->email?>"><?=$profil->email   ?></a></p>
+                    <div class="single-contact-info">
+                        <h4>WhatsApp <span><i class="fab fa-whatsapp"></i></span> </h4>
+                        <p><?=$profil->hp?></p>
                     </div>
-                </div>
-            </div>
+                </div><!-- /.contact-infos -->
+            </div><!-- /.col-md-5 -->
+        </div><!-- /.row -->
+    </div><!-- /.thm-container -->
+</section><!-- /.contact-style-one -->
 
-            <div class="clearfix"> </div>
-        </div>
-    </div>
+<div
+        class="google-map"
+        id="contact-google-map"
+        data-map-lat="0.4673939"
+        data-map-lng="101.3559124"
+        data-icon-path="<?=Yii::getAlias('@imgFrontend/map-marker.png')?>"
+        data-map-title="Pekanbaru, Riau, Indonesia"
+        data-map-zoom="16"
+        data-markers='{
+            "marker-1": [0.467595, 101.356150, "<h4>Kantor Utama</h4><p>TopApp.id</p>"]        }'>
+
 </div>
 
 
